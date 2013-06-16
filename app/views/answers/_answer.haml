@@ -27,7 +27,7 @@
               = answer.score
 
       .span7.body
-        = markdown(answer.body)
+        = markdown(answer.body, auto_p_tags: true)
 
       = link_to nil, href: edit_answer_path(answer), class: "edit-link" do
         %i.icon-pencil
