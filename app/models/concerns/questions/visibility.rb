@@ -18,7 +18,7 @@ module Questions
         items = all
 
         if [nil, false].include?(val)
-          items = items.where(visibility: :public, site_public: true)
+          items = items.where(visibility: :public)
         end
 
         items
