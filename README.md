@@ -3,6 +3,8 @@ Evergreen App
 
 Evergreen App is an open source question and answer platform that lets you better engage with and support your users and your team.
 
+You can view our site in action here: [http://www.evergreenapp.org](http://www.evergreenapp.org)
+
 ### Setup
 Evergreen depends on certain features of PostgreSQL for core functionality
 so you will need a Postgres install to run the app. You'll also
