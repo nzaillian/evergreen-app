@@ -7,8 +7,8 @@
         %i.icon-pencil
         edit
 
-    %p
-      = markdown(question.body)
+    .question-body
+      = markdown(question.body, auto_p_tags: true)
 
     .row
       = render partial: "/questions/tags", locals: {question: question}

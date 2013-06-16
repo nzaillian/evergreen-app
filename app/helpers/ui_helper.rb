@@ -50,15 +50,18 @@ module UiHelper
   end
 
 
-  def markdown(content)
+  def markdown(content, opts={})
     rendered = markdown_renderer.render(content)
 
     # hack around Redcarpet "<p>" tag content wrapping
     # (see https://github.com/vmg/redcarpet/issues/92)
-    filtered = Regexp.new('^<p>(.*)<\/p>$').match(rendered)
+    matcher = Regexp.new(/^<p>(.*)<\/p>$/)
 
-    if filtered && filtered.length > 1
-      filtered[1].html_safe
+    matches = rendered.scan(matcher)
+
+    if (matches && matches.length > 1) && opts[:auto_p_tags] != true
+      filtered = rendered.gsub(/^<p>/, "").gsub(/<\/p>$/, "")
+      filtered.html_safe
     else
       rendered.html_safe
     end
