@@ -15,8 +15,7 @@
           = horizontal_divider
 
           %span.reply-count
-            = question.answers.size
-            replies
+            = pluralize(question.answers.size, "reply")
 
           = horizontal_divider
 
