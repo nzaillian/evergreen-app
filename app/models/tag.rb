@@ -27,7 +27,7 @@ class Tag < ActiveRecord::Base
 
   def update_score!
     update_column :score, question_tags.size
-    update_column :updated_at, Time.now
+    update_column :updated_at, current_time_from_proper_timezone
   end
 
   def init

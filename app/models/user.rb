@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
 
   before_destroy :prohibit_destroy
 
+  after_update :update_dependent_models
+
   private
 
   def init
@@ -52,5 +54,13 @@ class User < ActiveRecord::Base
     errors[:base] << "User accounts cannot be destroyed. " +
       "They can only be cancelled."
     false
+  end
+
+  # we want to expire all caches for associated 
+  # questions/answers/comments
+  def update_dependent_models
+    questions.map &:touch
+    answers.update_all(updated_at: current_time_from_proper_timezone)
+    comments.update_all(updated_at: current_time_from_proper_timezone)
   end
 end

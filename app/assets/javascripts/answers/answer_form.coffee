@@ -10,7 +10,6 @@ class AnswerForms
       url: form.attr("action")
       data: form.serialize()      
       success: (data, text_status, jq_xhr) =>
-        debugger
         if data.status == "success"
           $(".answer-form-wrap").replaceWith( $(data.new_form) )
           $(".answers-list-wrap").removeClass("empty")

@@ -8,9 +8,15 @@ class QuestionTag < ActiveRecord::Base
 
   after_destroy :update_tag_score!
 
+  after_create :touch_all_related_questions
+
   private
 
   def update_tag_score!
     tag.update_score!
+  end
+
+  def touch_all_related_questions
+    tag.questions.where("id != ?", question.id).map &:touch
   end
 end

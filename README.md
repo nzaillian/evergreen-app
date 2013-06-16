@@ -98,8 +98,8 @@ specifically richer posts (there's already markdown support but I
 haven't yet added image attachments and the corresponding UI),
 and a XMPP-server-backed chat widget (I haven't had the time
 to work out the most appropriate way to integrate that).
-I'll keep discussions about these things going on 
-[Meta Evergreen](http://evergreenapp.org/meta).
+I'll keep discussions about these things going on the
+[Meta Evergreen board](http://evergreenapp.org/c/meta).
 
 #### Contact
 If you want to reach me to discuss this project you can 

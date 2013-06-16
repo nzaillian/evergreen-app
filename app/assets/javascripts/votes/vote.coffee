@@ -5,7 +5,7 @@ class Vote
   _reveal_edit_links: =>
     if $.cookie("page_authorizations")?
       # read authorizations from cookie...
-      auths = $.parseJSON($.cookie("page_authorizations")) if $.cookie("page_authorizations")?
+      auths = $.parseJSON($.cookie("page_authorizations"))
 
       if auths.voted_on?
         for voted_on in auths.voted_on
