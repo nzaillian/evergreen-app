@@ -76,6 +76,8 @@ class QuestionsController < ApplicationController
     if request.post?
       @vote = @question.votes.new(user_id: current_user.id)
 
+      authorize! :post, @vote
+
       if @vote.save
         @question.reload
         render json: {status: "success", vote: @vote, total: @question.score}

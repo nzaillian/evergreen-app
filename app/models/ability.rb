@@ -40,9 +40,33 @@ class Ability
       answer.user == user || can?(:modify, answer.question)
     end
 
+    can :read, Answer do |answer|
+      can?(:read, answer.question)
+    end
+
     can :modify, Comment do |comment|
       comment.user == user || can?(:modify, comment.company)
     end
+
+    can :read, Comment do |comment|
+      can?(:read, comment.answer)
+    end
+
+    ## ":post" permissions - delegate to ":read" ability on associated Question
+
+    can :post, Answer do |answer|
+      can?(:read, answer.question)
+    end
+
+    can :post, Comment do |comment|
+      can?(:post, comment.answer)
+    end
+
+    can :post, Vote do |vote|
+      can?(:read, vote.votable)
+    end
+
+    ## end ":post" permissions
 
     can :modify, Tag do |tag|
       can?(:modify, tag.company)

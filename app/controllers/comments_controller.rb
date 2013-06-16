@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
 
+    authorize! :post, @comment
+
     if @comment.save
       render json: {
         status: :success,
@@ -57,6 +59,8 @@ class CommentsController < ApplicationController
     
     if request.post?
       @vote = @comment.votes.new(user_id: current_user.id)
+
+      authorize! :post, @vote
 
       if @vote.save
         @comment.reload

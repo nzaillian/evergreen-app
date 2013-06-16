@@ -7,6 +7,8 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
 
+    authorize! :post, @answer
+
     if @answer.save
       answer_partial = render_to_string(partial: "/answers/answer", locals: {answer: @answer}).html_safe
       new_form = render_to_string(partial: "/answers/form", locals: {answer: Answer.new(question_id: @answer.question_id)}).html_safe
@@ -49,6 +51,8 @@ class AnswersController < ApplicationController
     
     if request.post?
       @vote = @answer.votes.new(user_id: current_user.id)
+
+      authorize! :post, @vote
 
       if @vote.save
         @answer.reload
