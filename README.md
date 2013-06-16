@@ -104,6 +104,6 @@ I'll keep discussions about these things going on
 #### Contact
 If you want to reach me to discuss this project you can 
 do so by email at nicholas@evergreenapp.org or by posting
-to the [Meta Evergreen board (meta.evergreenapp.org)](meta.evergreenapp.org). I want 
+to the [Meta Evergreen board (evergreenapp.org/c/meta)](http://www.evergreenapp.org/c/meta). I want 
 to make sure Evergreen addresses the biggest pain points in this space 
 and would be happy to help other product owners get it set up.
