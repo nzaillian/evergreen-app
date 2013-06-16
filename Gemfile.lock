@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: git@github.com:nzaillian/breadcrumbs_on_rails.git
-  revision: d45c273827b69ce3aa13aa36a02d5aa9191e0e69
+  revision: d20b991af607cd766ff4745adc304b33e7db06d1
   specs:
     breadcrumbs_on_rails (2.3.0)
 
