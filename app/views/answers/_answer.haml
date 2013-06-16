@@ -1,0 +1,45 @@
+%li.answer{data: {id: answer.id}, class: ("accepted" if answer.accepted)}
+  - cache [answer, "content"] do
+    .row.answer-content
+      .span8.accepted-notice
+        %i.icon-check
+        Accepted Answer
+
+      .span1.user-info
+        .inner
+          = link_to nil, href: user_path(answer.user), class: "profile-link-wrap" do
+
+            - team_member = answer.user.team_member(@company)
+
+            .avatar-wrap{class: ("team-member" if team_member)}
+              = image_tag answer.user.avatar.url(:small), class: "avatar"
+              
+              - if team_member
+                .role-title{title: team_member.title}
+                  = truncate(team_member.title)
+            
+            .username
+              = truncate(answer.user.nickname, length: 12)
+
+          .answer-score-wrap
+            Answer Score
+            .answer-score{data: {"answer-id" => answer.id}}
+              = answer.score
+
+      .span7.body
+        = markdown(answer.body)
+
+      = link_to nil, href: edit_answer_path(answer), class: "edit-link" do
+        %i.icon-pencil
+
+    .row
+      .span7.offset1.answer-actions
+        = render partial: "/answers/vote_link", locals: {answer: answer}
+        = render partial: "/answers/add_comment_link", locals: {answer: answer}
+        = render partial: "/answers/accept_answer_link", locals: {answer: answer}
+
+    .new-comment-anchor
+  
+    %ul.comments
+      - answer.comments.each do |comment|
+        = render partial: "/comments/comment", locals: {comment: comment}

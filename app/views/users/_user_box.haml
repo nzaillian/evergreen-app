@@ -1,0 +1,14 @@
+- cache [user, "_user_box"] do
+  .user-box
+    .date{data: {date: question.created_at.iso8601}}
+      = question.created_at.to_s(:slashes_with_time)
+    = link_to nil, href: user_path(user), class: "info" do
+      = image_tag user.avatar.url(:thumb), class: "avatar"
+      %span.username
+        = truncate(user.nickname, length: 15)
+
+      - team_member = @question.user.team_member(@company)
+
+      - if team_member
+        .team-member-role{title: team_member.title, data: {toggle: "tooltip", placement: "bottom"}}
+          = truncate(team_member.title, length: 13)

@@ -1,0 +1,15 @@
+- cache [@company, "links"] do
+  - if @company.site_links_sidebar_widget_enabled && @company.links.size > 0
+    #links.box
+      %h4 
+        Other Links
+
+      %ul.links
+        - @company.links.each do |link|
+          %li
+            = link_to link.title, link.url, target: "_blank", class: "site-link"
+
+      - if admin?
+        = link_to nil, href: edit_admin_company_path(@company) + "#links", class: "edit-link" do
+          %i.icon-pencil
+          edit

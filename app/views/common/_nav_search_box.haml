@@ -1,0 +1,5 @@
+- if @company
+  = form_tag search_company_questions_path(@company), method: :get, class: "navbar-search", id: "question-search" do
+    = text_field_tag "question[filters][query]", params[:question][:filters][:query],
+      placeholder: "Search all discussions", class: "search-query"
+    = submit_tag "Go", class: "btn btn-inverse search-btn"

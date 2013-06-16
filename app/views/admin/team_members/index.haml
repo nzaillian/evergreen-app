@@ -1,0 +1,17 @@
+- content_for :content do
+  #edit-team-members
+    .widget
+      .widget-header
+        %h3 Team Members
+      .widget-content
+        .tabbed-form
+          %ul#company-edit-tabs.nav.nav-tabs
+            %li.active
+              %a{href: "#manage"}
+                All
+            %li
+              %a{href: "#sort"}                
+                Choose Featured
+          .tab-content
+            = render partial: "manage", locals: {team_members: @team_members}
+            = render partial: "sort", locals: {team_members: @team_members}

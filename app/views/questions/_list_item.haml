@@ -1,0 +1,34 @@
+- cache [question, "list_item"] do
+  %li.question{data: {id: question.id}}
+    .row
+      .span1.avatar-wrap
+        .avatar-wrap-inner
+          = image_tag question.user.avatar.url(:thumb), class: "avatar"
+
+      .span6.info
+        %h5
+          = link_to truncate(question.title), question_path(question)
+        .more
+
+          = link_to truncate(question.user.nickname), question.user, class: "profile-link"
+
+          = horizontal_divider
+
+          %span.reply-count
+            = question.answers.size
+            replies
+
+          = horizontal_divider
+
+          %span.time-ago
+            Posted
+            %span.date{data: {date: question.created_at.iso8601}}
+              = question.created_at.to_s(:slashes_with_time)
+
+          .span6
+            %ul.tags
+              - question.tags.each do |tag|
+                = render partial: "/tags/tag", locals: {tag: tag}              
+
+      .span1.score-wrap
+        = render partial: "/questions/score_box", locals: {question: question}

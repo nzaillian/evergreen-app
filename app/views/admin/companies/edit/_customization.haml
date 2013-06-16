@@ -1,0 +1,6 @@
+#customization.tab-pane
+  = semantic_form_for @company, url: admin_company_path(@company) do |f|
+    = f.inputs do
+      = f.input :styles, label: "Custom Style Rules", input_html: {class: "large-size", id: "styles-input", placeholder: "Add custom CSS style rules here..."}
+    = f.actions do
+      = f.action :submit, label: "Update Settings"

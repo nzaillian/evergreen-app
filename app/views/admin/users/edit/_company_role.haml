@@ -1,0 +1,27 @@
+#company-role.tab-pane
+  = semantic_form_for @team_member, url: admin_team_member_path(@team_member, company_id: @company.id) do |f|    
+    = f.semantic_errors
+
+    %p 
+      The role you enter below will be displayed under your
+      avatar so that people visiting your community can trust the
+      authority of your answers. Examples include: "CEO", "Community Manager",
+      "Support Lead".
+
+
+    = f.inputs do
+      = hidden_field_tag "section", params[:section]
+      = f.input :title, label: "Company Role"
+      
+      - # because this form is going to be processed by admin/team_members_controller
+      - # (rather than admin/users_controller) we need to provide this 
+      - # context informaiton to render the right views and do the correct redirection
+
+      = hidden_field_tag "from[controller]", "admin/users"
+      = hidden_field_tag "from[action]", "edit"
+      = hidden_field_tag "from[id]", @user.id
+      = hidden_field_tag "from[company_id]", @company.id
+
+    = f.actions do
+      = f.action :submit, label: "Update Settings",
+      button_html: {data: {disable_with: "Updating..."}}

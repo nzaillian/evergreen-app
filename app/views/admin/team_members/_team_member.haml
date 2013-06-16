@@ -1,0 +1,29 @@
+%li.team-member{data: {id: team_member.id}}
+  .row-fluid
+    .span1.avatar-wrap
+      = image_tag (team_member.user.try(:avatar).try(:url, :thumb) || AvatarUploader.new.default_url), class: "avatar"
+
+    .span7.info
+      %h5
+        - if team_member.user
+          = link_to truncate(team_member.user.nickname), user_path(team_member.user)
+        - else
+          = "#{team_member.email} <span class='invited'>(invited)</span>".html_safe
+      .more
+        - if team_member.user
+          = link_to truncate(team_member.user.email), "mailto:#{team_member.user.email}"
+        - else
+          = link_to truncate(team_member.email), "mailto:#{team_member.email}"
+
+    .span2.roles
+      %h5 Role:
+      = team_member.humanized_role
+      = link_to "change role", edit_admin_team_member_path(team_member), class: "edit-link"
+
+
+
+    .span2
+      = link_to nil, href: admin_team_member_path(team_member), class: "remove-link",
+      data: {confirm: "Are you sure you want to remove this team member?", method: :delete} do
+        %i.icon-remove
+        Remove

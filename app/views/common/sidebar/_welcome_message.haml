@@ -1,0 +1,14 @@
+- cache [@company, "welcome_message"] do
+  - if @company.welcome_message_sidebar_widget_enabled && @company.welcome_message.present?
+    #welcome-message.box
+      - if @company.welcome_message_sidebar_widget_title.present?        
+        %h4 
+          = @company.welcome_message_sidebar_widget_title
+
+      %p
+        = @company.welcome_message
+
+      - if admin?
+        = link_to nil, href: edit_admin_company_path(@company) + "#basic-info", class: "edit-link" do
+          %i.icon-pencil
+          edit

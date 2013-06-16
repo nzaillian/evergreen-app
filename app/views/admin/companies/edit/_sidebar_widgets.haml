@@ -1,0 +1,14 @@
+#sidebar-widgets.tab-pane
+  %p
+    You can set the visibility of the sidebar
+    widgets on your site using the controls below.
+
+  = semantic_form_for @company, url: admin_company_path(@company) do |f|
+    = f.inputs do
+      = f.input :welcome_message_sidebar_widget_enabled, label: "Welcome message"
+      = f.input :welcome_message_sidebar_widget_title, label: "Title for welcome message (leave blank for no title)"
+      = f. input :site_links_sidebar_widget_enabled, label: "Site links"
+      = f.input :tag_box_sidebar_widget_enabled, label: "Tag box"
+    .breaker  
+    = f.actions do
+      = f.action :submit, label: "Update Settings"  

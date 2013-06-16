@@ -1,0 +1,7 @@
+= link_to nil, href: accepted_answer_question_path(answer.question, answer_id: answer), class: "accept-answer", data: {method: :post} do
+  %i.icon-check
+  Accept Answer
+
+= link_to nil, href: accepted_answer_question_path(answer.question, answer_id: answer), answer_id: answer, class: "undo-accept-answer", data: {method: :delete} do
+  %i.icon-remove
+  Undo "Accept Answer"

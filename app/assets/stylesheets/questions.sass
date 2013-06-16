@@ -1,0 +1,118 @@
+@import "common/common"
+
+.company-name-wrap
+  .primary-heading.company-name
+    margin-bottom: 0px
+
+  hr
+    margin-top: 6px
+    margin-bottom: 6px
+
+  p.tagline
+    margin-top: 0px
+    margin-bottom: 0px
+
+.top-divider
+  margin-top: 10px
+
+#question-box
+  .question-input
+    margin-top: 12px
+
+.question-classifications
+  display: block
+  float: left    
+
+.questions-list
+  list-style-type: none
+  display: block
+
+  .question
+    border-bottom: 1px dashed +lighten($grayLight, 15%)
+    padding-top: 8px
+    padding-bottom: 8px
+
+    .edit-link
+      display: none
+
+    &.editable
+      .edit-link
+        display: block
+
+    .info
+      margin-left: 8px
+      margin-right: 12px
+      .star
+        color: #BCC2C5
+
+      &:hover 
+        text-decoration: none
+
+        .star
+          text-decoration: none
+          color: #fbd104
+
+      span.score
+        font-weight: bold
+
+
+    .avatar-wrap
+      display: table
+      margin-top: 0px
+      margin-bottom: 0px
+
+      .avatar-wrap-inner
+        display: table-cell
+        vertical-align: middle
+        margin: 0px
+      
+        img.avatar
+          width: 40px
+          margin-left: 8px
+
+    ul.tags
+      margin-left: -22px
+      margin-top: 1px
+      font-size: 10px
+
+      li.tag
+        margin-right: 2px
+        padding: 1px 6px
+
+        .score
+          font-size: 9px
+
+  .question:last-child
+    border-bottom: none
+
+.show-question
+  .question
+    position: relative
+    padding: 18px
+    background: $highlight_bg
+    +box_shadow(0, 0, 5px, #888)
+    +rounded_corners(4px)        
+
+    h3
+      margin: 0px
+      line-height: 100%
+
+    p
+      margin-top: 4px
+
+    .edit-link
+      display: none
+
+    &.editable
+      .edit-link
+        display: inline  
+
+    .score-box
+      position: absolute
+      right: 180px
+      bottom: 31px
+
+// form styles
+.full-question-form
+  #question_visibility_input
+    margin-bottom: 14px

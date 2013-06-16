@@ -1,0 +1,38 @@
+- if team_member?
+  - cache [current_user, "admin_bar"] do
+    #admin-bar.navbar
+      .navbar-content
+        #companies-dropdown.nav-collapse.collapse
+          %ul.nav.companies-nav
+            %li.dropdown.companies-dropdown-button
+              %a{:href => "#", :class => "dropdown-toggle", :data => {"toggle" => "dropdown"}}
+                My Sites
+              %ul.dropdown-menu
+                - current_user.companies.all.each do |company|
+                  %li{class: ("active" if company == @company)}
+                    = link_to company.name, company_questions_path(company)
+
+
+        %ul.nav.settings-nav
+          %li
+            = link_to nil, href: company_questions_path(@company) do
+              %i.icon-home
+              Home
+
+          %li 
+            = link_to nil, href: admin_company_questions_path(@company) do
+              %i.icon-align-justify
+              Manage Discussions
+
+          %li 
+            = link_to nil, href: admin_company_tags_path(@company) do
+              %i.icon-tags
+              Manage Tags              
+          
+          %li.admin-link
+            - url = admin? ? edit_admin_company_path(@company) : edit_admin_user_path(current_user, company_id: @company.id)
+            
+            = link_to nil, href: url do
+              %i.icon-cog
+              Settings
+      .clear

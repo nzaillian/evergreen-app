@@ -1,0 +1,15 @@
+- content_for :content do
+  .row
+    %h3.span8.primary-heading.company-name
+      Discussions tagged
+      = "\"#{@tag.name}\""
+
+  .row
+    %hr.span8
+
+  - cache [@tag, "show", team_member?.to_s, sort_order, params[:page]] do
+    - @questions = @tag.questions.include_private(team_member?).order(sort_order).page(params[:page])
+    
+    = render partial: "/questions/list"
+
+    = paginate @questions    

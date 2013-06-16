@@ -1,0 +1,28 @@
+#links.tab-pane
+  %p
+    Any links you add below will be added to the
+    "company links" widget in the sidebar of your site.
+  
+  %table#links-table.table.company-links{data: {"update-url" => batch_update_admin_company_links_path(@company)}}
+    %thead
+      %tr
+        %th Title
+        %th Url
+        %th Edit
+    %tbody        
+      - if @company.links.empty?
+        %tr.empty
+          %td{colspan: "4"}
+            No links have yet been added
+      - else
+        - @company.links.each do |link|
+          %tr{data: {id: link.id}}
+            %td= truncate(link.title)
+            %td= truncate(link.url)
+            %td.edit= link_to "edit", edit_admin_link_path(link)      
+
+  %hr
+  = link_to nil, href: new_admin_company_link_path(@company), class: "btn" do
+    %i.icon-plus
+    New Site Link
+  .clear

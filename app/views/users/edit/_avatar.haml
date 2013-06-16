@@ -1,0 +1,15 @@
+#avatar.tab-pane
+  .image-upload.small.well.user-avatar
+    = semantic_form_for @user, url: user_path(@user) do |f|
+      = hidden_field_tag "company_id", params[:company_id]
+      = f.semantic_errors
+      = f.inputs do
+        %h4 Avatar
+        = image_tag @user.avatar.url, class: "thumbnail"
+        = f.file_field :avatar
+        = f.action :submit, label: "Start Upload", button_html: {class: "btn btn-info", data: {disable_with: "Uploading..."}}
+        - if @user.avatar.present?
+          = link_to "Remove Avatar", delete_avatar_user_path(@user),
+          data: {method: :delete, confirm: "Are you sure you want to delete this avatar?"},
+          class: "delete-link"        
+        .clear

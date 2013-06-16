@@ -1,0 +1,13 @@
+- content_for :content do
+  .tags-index
+    %h2 Tags
+
+    = form_tag company_tags_path(@company), method: "get", class: "form-search search-tags" do
+      = text_field_tag "filters[term]", params[:filters][:term], placeholder: "Enter search term...", class: "input-large search-query"
+      = submit_tag "Search", class: "btn", data: {disable_with: "Searching..."}
+
+    %hr
+
+    %ul.tags.clickable
+      - @tags.each do |tag|
+        = render partial: "/tags/tag", locals: {tag: tag}

@@ -1,0 +1,16 @@
+- url = default_opt(:url) { admin_company_links_path(@company) }
+- method = default_opt(:method) { :post }
+- show_delete = default_opt(:show_delete) { false }
+
+.row
+  .span3
+    = semantic_form_for @link, url: url, method: method do |f|
+      = f.semantic_errors
+      = f.inputs do
+        = f.input :title
+        = f.input :url
+      = f.actions do
+        = f.action :submit
+        - if show_delete
+          = delete_link "Delete", admin_link_path(@link), 
+          confirm: "Are you sure you want to remove this link?"

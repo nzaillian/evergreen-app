@@ -1,0 +1,28 @@
+- question = default_opt(:question) { Question.new }
+- method = default_opt(:method) { :get }
+- button_text = default_opt(:button_text) { "Continue" }
+
+- cache ["common/question_box", @company, current_user] do
+  - if current_user.nil?
+    - url = login_redirect_path
+  - else
+    - url = default_opt(:url) { new_company_question_path(@company) }
+
+  #question-box
+    = semantic_form_for question, url: url, method: method do |f|
+      %h4.ask
+        Ask a question
+      
+      - if current_user.nil?
+        = hidden_field_tag "next", new_company_question_path(@company)
+      .input.question-input
+        .control-label
+        .controls
+          .row
+            .span8
+              = f.text_area :title, class: "small-size", 
+              placeholder: "Enter a brief 1 sentence summary of your question"
+
+      .row
+        .span2.offset6
+          = f.submit button_text, class: "btn fill-width", data: {disable_with: "Loading..."}

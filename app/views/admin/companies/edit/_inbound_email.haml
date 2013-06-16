@@ -1,0 +1,9 @@
+#inbound-email.tab-pane
+  = semantic_form_for @company, url: admin_company_path(@company) do |f|
+    = f.inputs do
+      = uneditable_input_tag f.object.maildrop_address, "Maildrop address", class: "input-xlarge maildrop-address"
+
+      = f.input :auto_create_questions_from_email, label: "Automatically convert email issues into questions"
+    
+    = f.actions do
+      = f.action :submit, label: "Update Settings"

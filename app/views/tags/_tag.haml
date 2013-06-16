@@ -1,0 +1,6 @@
+%li.tag
+  = link_to nil, href: tag_path(tag) do
+    %span.name
+      = truncate(tag.name, length: 20)
+    %span.score
+      ="x#{tag.score}"                

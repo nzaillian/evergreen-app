@@ -1,0 +1,26 @@
+- @tags = @tags.limit(12)
+
+#tags-dropdown.dropdown-content
+  %a{:class => 'close', :data => {:dismiss => 'dropdown-content'}}
+    &times;
+  - if @tags.empty?
+    .empty
+      No existing tags match your search. You can create a new tag
+      below.
+          
+    .new-tag
+      = render_errors(@tag)
+      
+      = form_for @tag, url: company_tags_path(@company), html: {id: "new-tag"} do |f|
+        = f.text_field :name, value: params[:filters][:term] || @tag.name, placeholder: "New tag name", class: "name"
+        = f.submit "Create tag", class: "btn submit"
+
+
+  %ul.tag-search-results
+    - @tags.each do |tag|
+      %li.tag{data: {id: tag.id, name: tag.name}}
+        %a{href: "#"}
+          %span.name
+            = tag.name
+          %span.score
+            ="x#{tag.score}"

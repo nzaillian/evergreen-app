@@ -1,0 +1,48 @@
+- content_for :main do
+  .admin-questions-page
+    .row
+      %h2.span8
+        Manage Tags
+
+    %hr
+
+    .row
+      .span3.filters
+        = form_tag admin_company_tags_path(@company), method: :get, class: "tag-filters" do        
+          .section
+            %h5 Search Tags
+            = text_field_tag "filters[name]", params[:filters][:name], class: "search-term", placeholder: "Enter a tag name"
+            .clear
+
+            = submit_tag "Search", class: "btn search-button", data: {disable_with: "Searching"}
+
+          .section
+            %h5 Add Tag
+            = link_to nil, href: new_admin_company_tag_path(@company), class: "btn btn-success" do
+              %i.icon-plus
+              Add a New Tag
+
+      .span9.tags
+        %table.table.tags-table
+          %thead
+            %tr
+              %th= sortable_column "Name"
+              %th= sortable_column "Popularity", column: :score
+              %th
+          %tbody
+            - if @tags.empty?
+              %tr.empty
+                %td{colspan: "2"}
+                  - if params[:filters][:name].present?
+                    No tags found matching your search
+                  - else
+                    No tags have yet been created
+            - else
+              - @tags.each do |tag|
+                %tr
+                  %td= link_to tag.name, tag_path(tag)
+                  %td= tag.score
+                  %td.edit= link_to "Edit Tag", edit_admin_tag_path(tag)
+
+
+        = paginate @tags

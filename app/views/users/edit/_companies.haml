@@ -1,0 +1,24 @@
+#companies.tab-pane
+  - if @user.companies.empty?
+    %p.empty
+      You have not been added to or created
+      any company accounts. If you would like
+      to create a company account, click the 
+      "Add Company Account" button below.
+
+  - else
+    %p
+      You belong to the following company accounts.
+      If you would like to create a new company account, 
+      click the "Add Company Account" button below.
+      
+    %ul.companies
+      - @user.companies.each do |company|
+        %li
+          = link_to truncate(company.name), admin_company_questions_path(company)
+
+  %hr
+
+  = link_to nil, href: new_admin_company_path, class: "btn btn-success", id: "add-company" do
+    %i.icon-plus
+    Add Company Account

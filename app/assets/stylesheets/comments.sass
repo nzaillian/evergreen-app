@@ -1,0 +1,55 @@
+@import "common/common"
+
+.comment-form-wrap
+  width: 100%
+  margin: 18px 0px
+  background: $main_bg
+
+.comment-form-wrap.in-page
+  margin: 0px  
+
+ul.comments
+  list-style-type: none
+  margin: 0px
+  padding: 0px
+  color: $gray
+  font-size: 12px
+  margin-top: 12px
+
+  li.comment
+    border-top: 1px dashed +lighten($grayLight, 15%)
+    padding: 10px 0px 10px 0px
+    position: relative
+
+    .score-wrap, .comment-body
+      float: left
+
+    .score-wrap
+      width: 40px
+      text-align: center
+
+      .comment-vote-link
+        display: block
+        clear: both
+        color: #999
+        
+        &:hover
+          text-decoration: none
+
+        &.voted
+          color: #fbd104        
+
+    .comment-body
+      width: 500px
+
+    .comment-info
+
+    .edit-link
+      display: none
+      position: absolute
+      right: 10px
+      font-size: 12px
+
+    &.editable
+      .edit-link
+        display: block

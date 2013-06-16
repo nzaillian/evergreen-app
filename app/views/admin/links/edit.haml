@@ -1,0 +1,3 @@
+- content_for :main do
+  %h3 Edit Site Link
+  = render partial: "form", locals: {url: admin_link_path(@link), method: :patch, show_delete: true}

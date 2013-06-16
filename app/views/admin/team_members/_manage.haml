@@ -1,0 +1,15 @@
+#manage.tab-pane.active
+  %ul.team-members
+    - @team_members.keep_if{ |t| t.id.present? }.each do |team_member|
+      = render partial: "team_member", locals: {team_member: team_member}
+  
+  %h4 Add a team member
+  
+  = semantic_form_for @team_member, url: admin_company_team_members_path(@company) do |f|
+    = hidden_field_tag "section", params[:section]
+    = f.semantic_errors
+    = f.inputs do
+      = f.input :email
+      = f.input :role, as: :select, include_blank: false, collection: TeamMember.role_options
+    = f.actions do
+      = f.action :submit, label: "Add to team", data: {disable_with: "Adding..."}

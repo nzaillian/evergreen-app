@@ -1,0 +1,29 @@
+- url = default_opt(:url) { company_answers_path(@company) }
+- method = default_opt(:method) { :post }
+- show_heading = default_opt(:show_heading) { true }
+- show_delete = default_opt(:show_delete) { false }
+- remote = default_opt(:remote) { true }
+
+- if current_user.nil?
+  - if true #cache ["answer_form_stub", answer.question] do
+    .answer-form-stub
+      = link_to nil, href: login_redirect_path(next: request.path), 
+      class: "btn btn-success logged-out-user-post-answer" do
+        %i.icon-plus
+        Post and Answer
+
+
+- else
+  .answer-form-wrap
+    - if show_heading
+      %h4 Reply to this question
+
+    = semantic_form_for answer, url: url, method: method, html: {class: "answer-form#{' remote' if remote}"} do |f|
+      = f.semantic_errors
+      = f.inputs do
+        = f.input :body, as: :text, label: "Your answer", input_html: {class: "large-size"}
+        = f.hidden_field :question_id
+      = f.actions do
+        = f.action :submit, button_html: {data: {disable_with: "Posting..."}}
+        - if show_delete
+          = delete_link("Delete", answer_path(answer), confirm: "Are you sure you want to delete your answer?")

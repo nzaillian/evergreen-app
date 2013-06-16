@@ -1,0 +1,16 @@
+- content_for :content do
+  #edit-team-members
+    .widget
+      .widget-header
+        %h3 Change Role
+      .widget-content
+        %p
+          :erb
+            You are editing the role setting for team member 
+            <strong>"<%= @team_member.email %>"</strong>
+        = semantic_form_for @team_member, url: admin_team_member_path(@team_member) do |f|
+          = f.semantic_errors
+          = f.inputs do
+            = f.input :role, as: :radio, collection: TeamMember.role_options
+          = f.actions do
+            = f.action :submit, label: "Update Settings"

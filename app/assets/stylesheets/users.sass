@@ -1,0 +1,41 @@
+@import "common/common"
+
+.user-box
+  width: 134px
+  height: 60px
+  padding: 2px 5px
+  position: relative
+  float: right
+  border: 1px solid #c2c2c2
+  background: $pull_bg  
+  color: $pull_text
+  font-size: 12px
+
+  .date
+    font-size: 11px
+    white-space: nowrap
+
+  .info    
+    float: left
+
+    .avatar
+      width: 30px
+      float: left
+      margin-right: 5px    
+    
+    .username
+      padding-left: 2px
+      float: left
+
+    .team-member-role
+      float: left
+      color: $team_member_highlight
+      font-style: italic
+      font-size: 11px
+      line-height: 11px
+      font-weight: bold
+      width: 84px
+      white-space: nowrap      
+
+    &:hover
+      text-decoration: none

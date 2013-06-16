@@ -1,0 +1,19 @@
+@import 'common/common'
+
+.score-box
+  +box_styling
+  height: 30px
+  line-height: 30px
+  width: 41px
+  padding-left: 5px
+  display: block
+  margin-top: 5px
+  +basic_shadow_c(5px, #ccc)  
+
+  &:hover
+    text-decoration: none
+    cursor: pointer
+
+  &.voted
+    .star
+      color: #fbd104        

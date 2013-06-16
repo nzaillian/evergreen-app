@@ -1,0 +1,19 @@
+- content_for :main do
+  .row
+    .span4.offset4
+      .widget
+        .widget-header
+          %h3 New Company Account
+        .widget-content
+          %p
+            Please enter some basic information about your company below.
+            You will be able to change this information at any time
+            from your account settings page.        
+          = semantic_form_for @company, url: admin_companies_path, method: :post do |f|
+            = f.semantic_errors
+            = f.inputs do
+              = f.input :name, label: "Company Name"
+              = f.input :slug, label: "URL name", hint: "The \"URL name\" you enter will be used to determine what URL your Evergreen site is accessible at"
+            = f.actions do
+              = f.action :submit
+

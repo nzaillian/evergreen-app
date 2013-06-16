@@ -1,0 +1,9 @@
+#= require ./hot
+#= require_tree ./ejs
+#= require ./rich_textarea/rich_textarea
+#= require ./ajax
+#= require ./jquery_ui_includes
+#= require ./jquery.cookie
+#= require ./cache_helper
+#= require_tree ./ui
+#= require_tree ./util

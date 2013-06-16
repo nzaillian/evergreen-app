@@ -1,0 +1,8 @@
+- content_for :content do
+  %h2= "Search results for \"#{params[:question][:filters][:query]}\""
+
+  %hr
+
+  = render partial: "/questions/search_results"
+
+  = paginate @questions

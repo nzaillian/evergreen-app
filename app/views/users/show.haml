@@ -1,0 +1,45 @@
+- content_for :main do
+  .users-show
+    %h2= "#{@user.nickname}'s Profile"
+    %hr
+    .row
+      .span3.profile-info
+        .box.info.center-align
+          = image_tag @user.avatar.url(:med), class: "avatar"
+      
+          %h5
+            = truncate(@user.nickname)
+          
+          %p.lighter
+            = "Active since #{@user.created_at.to_s(:slashes)}"
+
+        .box.stats
+          %h5 Stats
+          %ul.unstyled
+            %li
+              .icon-wrap
+                %i.icon-lightbulb
+              = @user.questions.size
+              Discussions Started
+            %li
+              .icon-wrap
+                %i.icon-comment-alt
+              = @user.answers.size
+              Answers Given
+
+            %li
+              .icon-wrap
+                %i.icon-comments-alt
+              = @user.answers.size
+              Comments Posted
+
+      .span9.user-questions
+        .row
+          .span9
+            = form_tag user_path(@user), method: :get, id: "question-filters", class: "form-inline" do
+              %label
+                Show
+              = select_tag "show", options_for_select([["Discussions user has started", "posted"], ["Discussions user has answered/commented on", "answered"]], params[:show])
+              = submit_tag "Apply", class: "btn", data: {disable_with: "Applying..."}
+        
+        = render partial: "/questions/list"

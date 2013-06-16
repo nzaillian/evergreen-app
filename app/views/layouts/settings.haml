@@ -1,0 +1,17 @@
+- @_current_layout = 'settings'
+- content_for :main do
+  .row
+    .span9
+      = yield :content
+    .span3
+      .widget.settings-navigation
+        .widget-header
+          %h3 Navigation
+        .widget-content
+          = tabs_tag do |tab|
+            - if admin?
+              = tab.company_settings "Site Settings", edit_admin_company_path(@company)
+              = tab.team_members "Team Settings", admin_company_team_members_path(@company)
+            = tab.account_settings "Account Settings", edit_admin_user_path(current_user, company_id: @company.id)
+      
+= render template: "/layouts/plain"

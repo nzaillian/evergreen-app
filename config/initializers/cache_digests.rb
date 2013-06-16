@@ -1,0 +1,1 @@
+#CacheDigests::DependencyTracker.register_tracker :haml, CacheDigests::DependencyTracker::ERBTracker

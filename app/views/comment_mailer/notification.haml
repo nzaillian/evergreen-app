@@ -1,0 +1,33 @@
+!!! html
+%html
+  %head
+    %style
+      = render_asset "mailers/style"
+
+  %body
+    %p
+      :erb
+        A new comment has been posted for the
+        question "<%= @comment.question.title %>".
+        Click the link below to view it.
+
+    %p
+      - url = question_path(@comment.question, only_path: false)
+      = link_to url, url
+
+    .notification-item
+      %h3 Comment Summary
+      .by
+        Posted by 
+        = @comment.user.nickname
+      %p.body
+        = @comment.body
+
+
+    .unsubscribe
+      %hr
+
+      - account_edit_url = edit_user_path(@recipient, company_id: @comment.question.company.id, only_path: false) + "#email-and-notifications"
+      If you would like to stop receiving notifications like
+      this, you can edit your email notification settings at
+      = link_to account_edit_url, account_edit_url

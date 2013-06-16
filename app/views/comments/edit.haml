@@ -1,0 +1,3 @@
+- content_for :content do
+  %h3 Edit Comment
+  = render partial: "form", locals: {comment: @comment, url: comment_path(@comment), method: :patch, show_heading: false, show_delete: true, remote: false}

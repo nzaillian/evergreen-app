@@ -1,0 +1,42 @@
+@import 'common/common'
+
+body.layout-settings
+  .container
+    border: 1px solid transparent
+    +rounded_corners(0px)
+    +shadow_explicit(none)
+    background: transparent
+    position: relative
+
+.settings-navigation
+  .widget-content
+    padding: 0px
+
+    ul
+      list-style-type: none
+      margin: 0px
+      padding: 0px
+
+      li
+        border-bottom: 1px solid #eee
+        border-top: 1px solid #fff
+
+        a, span
+          display: block
+          padding: 8px 10px 8px 8px
+          text-shadow: 0 1px 0 #fff
+          border-left: 2px solid #fafafb                
+
+          color: #4183c4
+          text-decoration: none          
+
+      li.current
+        background: #fff
+        border-left: 2px solid $warningText
+        font-weight: bold
+        color: $grayDarker
+        cursor: default
+        box-shadow: inset 0 0px 1px rgba(0,0,0,0.1)        
+
+        span
+          color: #000

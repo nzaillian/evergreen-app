@@ -1,0 +1,35 @@
+#email-and-notifications.tab-pane
+  = semantic_form_for @team_member, url: admin_team_member_path(@team_member, company_id: @company.id) do |f|    
+    = f.semantic_errors
+
+    = f.inputs do
+      = f.input :notify_of_new_questions, as: :radio,       
+      label: "Notify me by email when new discussions are created", 
+      collection: {"Yes" => true, "No" => false}
+      = f.input :notify_of_new_answers_or_comments, as: :radio,
+      label: "Notify me by email when answers or comments are posted", 
+      collection: {"Yes" => true, "No" => false}      
+
+      .breaker
+      .well.user-email-settings-links
+        %p
+          :erb
+            <strong>Note:</strong>
+            The settings above apply to all discussions
+            created on this site. To adjust settings relating
+            to notifications for just discussions that you
+            start and participate in, go to the 
+            <%= link_to "ordinary user account settings page",
+            edit_user_path(@user, company_id: @company.id) + "#email-and-notifications" %>.
+
+
+      - # you can find comments about the following 
+      - # in app/views/admin/users/edit/_company_role.haml
+
+      = hidden_field_tag "from[controller]", "admin/users"
+      = hidden_field_tag "from[action]", "edit"
+      = hidden_field_tag "from[id]", @user.id
+      = hidden_field_tag "from[company_id]", @company.id      
+
+    = f.actions do
+      = f.action :submit, label: "Update Settings"

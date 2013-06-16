@@ -1,0 +1,12 @@
+- cache [@company, "tag_box"] do
+  - if @company.tag_box_sidebar_widget_enabled && @company.tags.any?
+    #sidebar-tag-box.box
+      %h4 
+        Popular Tags
+
+      %ul.tags.clickable
+
+        - @company.tags.order("score DESC").limit(10).each do |tag|
+          = render partial: "/tags/tag", locals: {tag: tag}
+      .links
+        = link_to "Browse all tags &raquo;".html_safe, company_tags_path(@company), class: "browse-tags"

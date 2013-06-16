@@ -1,0 +1,111 @@
+@import "common/common"
+
+.answers-list-wrap
+  &.empty
+    display: none
+
+  ul.answers
+    list-style-type: none    
+
+    li.answer
+      padding: 12px 0px 0px 0px
+      border-bottom: 1px solid $strong_rule_color
+      margin-bottom: 24px
+      +rounded_corners(4px)
+
+      &:last-child
+        border-bottom: none
+
+      .accepted-notice
+        position: relative
+        display: none
+        padding: 0px 0px 12px 12px
+        color: $successText
+
+      .edit-link
+        display: none      
+        font-size: 12px
+        position: absolute
+        bottom: 10px
+        right: 10px        
+
+      &.editable
+        .edit-link
+          display: block
+
+      .answer-content
+        position: relative
+
+        .user-info
+          text-align: center
+          padding-left: 12px
+          overflow: visible
+
+          .inner        
+            width: 60px
+
+            .profile-link-wrap
+              display: block
+
+              &:hover
+                text-decoration: none
+              
+              .username
+                padding: 2px 0px 1px 0px
+              
+              .avatar-wrap.team-member            
+                background: $team_member_highlight
+                padding: 4px
+
+                .avatar
+                  margin: 0px 0px 0px -1px
+                  width: 53px
+                  height: 53px
+
+                .role-title
+                  font-size: 11px
+                  line-height: 13px
+                  color: white
+                  background: $team_member_highlight
+                  padding: 4px 4px 0px 4px
+                  font-weight: bold
+
+            .avatar
+              margin: 0px auto 2px auto
+              width: 60px
+              height: 60px
+          
+          .answer-score-wrap
+            line-height: 14px
+            font-size: 12px
+
+            .answer-score
+              font-size: 13px
+              line-height: 22px
+              color: inherit
+
+        .body
+          padding: 0px 12px
+
+      .answer-actions
+        margin-top: 8px
+        margin-bottom: 18px
+        
+        a
+          margin-right: 20px
+          color: #999
+          
+          &:hover
+            text-decoration: none        
+
+      &.accepted
+        background: $successBackground    
+        border-bottom: none
+
+        .accepted-notice
+          display: block 
+
+        &.editing
+          background: $main_bg  
+
+.answer-form-stub          

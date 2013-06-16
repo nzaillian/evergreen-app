@@ -1,0 +1,12 @@
+- content_for :main do
+  .companies-index
+    .row
+      .span4.offset4
+        .widget
+          .widget-header
+            %h3 Your Companies
+          .widget-content
+            %ul.unstyled.companies
+              - @companies.each do |company|
+                %li
+                  = link_to truncate(company.name), company_questions_path(company)

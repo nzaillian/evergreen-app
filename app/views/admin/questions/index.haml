@@ -1,0 +1,67 @@
+- content_for :main do
+  .admin-questions-page
+    .row
+      %h2.span8
+        Manage Discussions
+
+    %hr
+
+    .row
+      .span3.filters
+        = form_tag admin_company_questions_path(@company), method: :get, class: "question-filters" do        
+          .section
+            %h5 Title Filter
+            = text_field_tag "filters[title]", params[:filters][:query], class: "search-term", placeholder: "Enter question title"
+            .clear
+            = hidden_field_tag "filters[highlight_results]", "true"
+
+          .section
+            %h5 Author Filter
+            = text_field_tag "filters[author]", params[:filters][:author], class: "search-term", placeholder: "Enter name or email"
+            .clear            
+          
+          .section
+            %h5 Date Range Filter
+            = text_field_tag "filters[min_date]", params[:filters][:min_date], placeholder: "min date", class: "date-input"
+            = text_field_tag "filters[max_date]", params[:filters][:max_date], placeholder: "max date", class: "date-input"
+
+          .section
+            = hidden_field_tag "filters[company_id]", @company.id            
+            = submit_tag "Apply Filters", class: "btn search-button", data: {disable_with: "Applying"}
+
+          .section.muted
+            %h5 Full Text
+            %p 
+              To do a keyword search over the full text 
+              of every discussion, enter your terms in the 
+              "Search all discussions" text box in the top bar.
+
+
+      .span9
+        %table.table.questions-table
+          %thead
+            %tr
+              %th.title= sortable_column "Title"
+              %th= sortable_column "Posted At", column: :created_at
+              %th= sortable_column "Last Response", column: :last_response_date
+              %th Author
+              %th Author Email
+          %tbody
+            - if @questions.empty?
+              %tr.empty
+                %td{colspan: "5"}
+                  No questions
+            - else
+              - @questions.each do |question|                 
+                %tr{data: {"question-id" => question.id}}
+                  %td= link_to truncate(question.title, length: 16), question_path(question), title: question.title
+                  %td= question.created_at.to_s(:slashes)
+                  %td= question.last_response_date.to_s(:slashes)
+                  %td= link_to truncate(question.user.nickname, length: 13), user_path(question.user)
+                  %td= link_to truncate(question.user.email, length: 13), "mailto:#{question.user.email}"
+                - if params[:filters][:query].present?
+                  %tr.query-match{data: {"question-id" => question.id}}
+                    %td{colspan: 5}
+                      = search_snippet(question.document, params[:filters][:query])                      
+
+        = paginate @questions

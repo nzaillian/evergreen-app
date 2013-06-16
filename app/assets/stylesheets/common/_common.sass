@@ -1,0 +1,53 @@
+@import "bootstrap/variables"
+@import "palette"
+@import "ui"
+
+=rounded_corners($rad)
+  border-radius: $rad
+  -moz-border-radius: $rad
+  -webkit-border-radius: $rad
+
+=rounded_corners_ext($tl, $tr, $br, $bl)
+  border-radius: $tl $tr $br $bl
+  -moz-border-radius: $tl $tr $br $bl
+  -webkit-border-radius: $tl $tr $br $bl  
+
+=gradient($from, $to)
+  background-color: $from
+  background-image: -moz-linear-gradient($from, $to)
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to))
+  background-image: -webkit-linear-gradient($from, $to)
+  background-image: -o-linear-gradient($from, $to)
+
+=box_shadow_ext($col, $tl, $tr, $bl, $br)
+  -webkit-box-shadow: $col $tl $tr $bl $br
+  -moz-box-shadow: $col $tl $tr $bl $br
+  box-shadow: $col $tl $tr $bl $br
+
+=box_shadow($h_shadow, $v_shadow, $blur, $color)
+  -webkit-box-shadow: $h_shadow $v_shadow $blur $color
+  -moz-box-shadow: $h_shadow $v_shadow $blur $color
+  box-shadow: $h_shadow $v_shadow $blur $color
+
+=basic_shadow_c($width, $color)
+  -moz-box-shadow: 0 0 $width $color
+  -webkit-box-shadow: 0 0 $width $color
+  box-shadow: 0 0 $width $color
+
+=shadow_explicit($styles...)
+  -moz-box-shadow: $styles
+  -webkit-box-shadow: $styles
+  box-shadow: $styles
+
+=transition($options)
+  -webkit-transition: $options
+  -moz-transition: $options
+  -o-transition: $options
+  -ms-transition: $options
+  transition: $options  
+
+=light_gradient
+  +gradient($dark_silver, $mid_silver)
+
+=bottom_shadow
+  +box_shadow_ext(0px, 4px, 4px, -2px, $dark_silver)

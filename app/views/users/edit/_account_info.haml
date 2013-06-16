@@ -1,0 +1,16 @@
+#account-info.tab-pane.active
+  = semantic_form_for @user, url: user_path(@user) do |f|
+    = hidden_field_tag "section", params[:section]
+    = hidden_field_tag "company_id", params[:company_id]
+    
+    = f.semantic_errors
+    = f.inputs do
+      = f.input :nickname
+      = f.input :username
+      = f.input :email
+      = f.input :first_name
+      = f.input :last_name
+
+    = f.actions do
+      = f.action :submit, label: "Update Settings",
+      button_html: {data: {disable_with: "Updating..."}}

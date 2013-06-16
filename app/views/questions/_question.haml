@@ -1,0 +1,16 @@
+- cache @question do
+  .question.span8{data: {id: question.id}}
+    %h3
+      = question.title
+      
+      = link_to nil, href: edit_question_path(question), class: "edit-link" do
+        %i.icon-pencil
+        edit
+
+    %p
+      = markdown(question.body)
+
+    .row
+      = render partial: "/questions/tags", locals: {question: question}
+      = render partial: "score_box", locals: {question: question}
+      = render partial: "/users/user_box", locals: {question: question, user: question.user, show_delete: true}

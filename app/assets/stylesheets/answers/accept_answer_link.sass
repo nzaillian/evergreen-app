@@ -1,0 +1,23 @@
+.show-question
+  .answers-list-wrap
+    ul.answers
+      li.answer
+        .accept-answer, .undo-accept-answer
+          display: none
+
+  &.editable
+    .answers-list-wrap
+      ul.answers
+        li.answer
+          .accept-answer
+            display: inline
+
+          .undo-accept-answer
+            display: none
+
+          &.accepted      
+            .accept-answer
+              display: none
+
+            .undo-accept-answer
+              display: inline

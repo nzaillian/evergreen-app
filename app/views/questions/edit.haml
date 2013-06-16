@@ -1,0 +1,3 @@
+- content_for :content do
+  %h3 Edit question
+  = render partial: "/questions/form", locals: {question: @question, url: question_path(@question), method: :patch, show_delete: true}

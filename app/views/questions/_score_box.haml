@@ -1,0 +1,7 @@
+= link_to nil, href: "#", data: {url: question_question_votes_path(question_id: question.id), 
+  toggle: "tooltip", "votable-id" => question.id, "votable-type" => question.class.to_s}, 
+  title: "Vote on question", class: "score-box vote" do      
+  %span.star
+    %i.icon-star
+  %span.score
+    = question.score

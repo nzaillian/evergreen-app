@@ -1,0 +1,10 @@
+- content_for :main do
+  .row
+    .span4.offset4
+      .widget
+        .widget-header
+          %h3 Edit Tag
+        .widget-content.padded        
+          .row
+            .span4
+              = render partial: "form", locals: {url: admin_tag_path(@tag), method: :patch, show_delete: true}

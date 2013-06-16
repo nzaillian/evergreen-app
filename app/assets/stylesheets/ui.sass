@@ -1,0 +1,240 @@
+@import "common/common"
+
+#admin-bar
+  height: 29px
+  +bottom_shadow
+  +light_gradient
+  margin-bottom: 0px
+
+  .navbar-content
+
+    .companies-nav
+      li.companies-dropdown-button
+        a.dropdown-toggle
+          color: $dark_color
+          text-align: left
+          padding: 5px 0px 6px 0px
+
+          &:hover
+            text-decoration: underline
+            cusor: pointer
+
+    .settings-nav
+      float: right
+      margin-right: 24px
+
+      li
+        padding: 0px 9px
+
+      li.admin-link
+        padding: 0px 0px 0px 9px
+
+      a
+        padding: 5px 0px 6px 0px
+
+
+
+  .nav > li > a
+    &, &:hover, &:focus
+      background-color: transparent
+
+  .nav
+    margin: 0px
+
+.alert
+  position: relative
+  margin: 20px 0px 20px 0px
+
+img
+  max-width: none
+
+ul.error-list
+  margin: 0px
+  list-style-type: none
+
+form
+  margin: 0px
+
+.help-block
+  font-style: italic
+  font-size: 11px
+  color: $grayLight
+
+.form-actions
+  margin: 0px
+  padding: 0px
+  background: transparent
+  border-top: none
+  position: relative
+
+.control-group.boolean
+  input
+    margin-top: 6px
+
+.center-align
+  text-align: center
+
+label.for-checkbox  
+  input[type='checkbox']
+    margin: -2px 0px 0px 4px
+
+.actions
+  line-height: 40px
+  margin-top: 10px
+  margin-bottom: 10px
+  min-height: 30px
+  padding-top: 8px
+
+.basic-form
+  input[type='text'], textarea
+    width: 100%
+
+  .breaker
+    height: 20px
+
+.breaker
+  height: 10px
+
+
+textarea
+  &.mid-size, &.small-size, &.large-size
+    height: 110px
+    width: 100%
+
+  &.small-size
+    height: 70px
+
+  &.large-size
+    height: 140px
+
+input[type='text'].large-size
+  width: 100%
+
+.btn.btn-large
+  font-size: 28px
+  padding: 11px 47px
+  line-height: 134%
+
+input[type="submit"], .btn
+  &.fill-width
+    width: 100%
+
+input[type="file"] 
+  line-height: 16px
+
+span.horizontal-divider
+
+a.help
+  font-size: 18px
+  margin: 6px 0px 0px 8px
+  color: $grayDark
+  display: block
+  float: left
+
+  &:hover
+    cusor: pointer
+    text-decoration: none
+    opacity: 0.8
+
+
+.edit-link
+  font-size: 14px
+  font-weight: normal
+  color: $grayLight
+  margin-left: 2px
+
+  &:hover
+    color: #666
+
+.time
+  color: $grayLight    
+
+textarea
+  resize: none  
+
+.delete-link
+  color: $grayDarker
+  float: right
+  margin-top: 3px
+  display: block
+
+  i
+    margin-right: 3px    
+
+.breadcrumb
+  border: 1px solid #dddddd      
+
+.clear
+  width: 100%
+  clear: both
+
+.right
+  float: right  
+
+.well
+  h1, h2, h3, h4, h5
+    margin-top: 0px  
+
+.tab-pane
+  padding: 0px 10px    
+
+.tab-content
+  overflow: visible
+
+.pagination
+  text-align: center
+
+input.unstyled
+  +shadow_explicit(none)
+  border: none
+
+  &:focus
+    +shadow_explicit(none)
+    border-color: none
+
+.input-styles
+  margin-bottom: $baseLineHeight / 2
+  font-size: $baseFontSize
+  line-height: $baseLineHeight
+  color: $gray
+  +rounded_corners($inputBorderRadius)
+  +shadow_explicit(inset 0 1px 1px rgba(0,0,0,.075))
+  background-color: $inputBackground
+  border: 1px solid $inputBorder
+
+  &:focus
+    border-color: rgba(82,168,236,.8)
+    outline: 0
+    outline: thin dotted \9
+    +shadow_explicit(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)) 
+
+.lighter
+  color: $grayLight    
+
+.box
+  border: 1px solid #dddddd  
+  padding: 10px 15px
+  background: $light_silver_bg
+  margin-bottom: 18px  
+
+ul.unstyled
+  list-style-type: none
+  margin: 0px
+
+#breadcrumb-wrap
+  margin-top: 6px  
+
+.or-wrap
+  hr
+    position: relative
+    width: 100%
+
+  .or
+    position: relative
+    font-size: 19px
+    font-weight: bold
+    font-style: italic
+    width: 40px
+    text-align: center
+    background: $main_bg
+    margin: -33px auto 0px auto

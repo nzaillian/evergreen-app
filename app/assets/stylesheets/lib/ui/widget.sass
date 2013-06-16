@@ -1,0 +1,40 @@
+@import 'common/common'
+
+.widget
+  position: relative
+  clear: both
+  width: auto
+  margin-bottom: 2em
+  overflow: hidden  
+
+  .widget-header
+    position: relative
+    height: 40px
+    line-height: 40px
+    +gradient(#fafafa, #e9e9e9)
+    +rounded_corners_ext(4px, 4px, 0px, 0px)
+    border: 1px solid #D5D5D5
+    -webkit-background-clip: padding-box
+
+    h3
+      position: relative
+      top: 2px
+      left: 12px
+      display: inline-block
+      margin-right: 3em
+      font-size: 16px
+      font-weight: 800
+      color: #555
+      line-height: 14px
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.5)    
+
+
+  .widget-content
+    padding: 15px
+    background: #FFF
+    border: 1px solid #D5D5D5
+    +rounded_corners_ext(0px, 0px, 4px, 4px)
+    border-top: none
+
+    &.padded
+      padding: 20px 15px

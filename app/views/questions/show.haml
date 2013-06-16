@@ -1,0 +1,11 @@
+- content_for :content do
+  - cache [@question, "show"] do
+    .show-question
+      .row
+        = render @question
+
+      = render partial: "/answers/answers", locals: {answers: @question.answers.by_importance(@question)}
+
+      %hr
+
+  = render partial: "/answers/form", locals: {answer: (@answer || @question.answers.new)}

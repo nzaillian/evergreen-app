@@ -1,0 +1,30 @@
+#sort.tab-pane
+  = form_tag batch_update_admin_company_team_members_path(@company), method: :patch do
+    = hidden_field_tag "section", params[:section]
+    %ul.team-members.sort
+      - @team_members.keep_if{ |t| t.id.present? }.each do |team_member|
+        %li.team-member{data: {id: team_member.id}, class: ("featured" if team_member.featured)}
+          = hidden_field_tag "team_members[#{team_member.id}][featured][id]", team_member.id
+          .row-fluid
+            .span1.avatar-wrap
+              = image_tag (team_member.user.try(:avatar).try(:url, :thumb) || AvatarUploader.new.default_url), class: "avatar"
+
+            .span9.info
+              %h5
+                - if team_member.user
+                  = link_to truncate(team_member.user.nickname), user_path(team_member.user)
+                - else
+                  = "#{team_member.email} <span class='invited'>(invited)</span>".html_safe
+              .more
+                - if team_member.user
+                  = link_to truncate(team_member.user.email), "mailto:#{team_member.user.email}"
+                - else
+                  = link_to truncate(team_member.email), "mailto:#{team_member.email}"
+
+            .span2
+              %label.for-checkbox
+                featured
+                = check_box_tag "team_members[#{team_member.id}][featured]", true, team_member.featured
+
+    .breaker
+    = submit_tag "Commit changes", class: "btn"

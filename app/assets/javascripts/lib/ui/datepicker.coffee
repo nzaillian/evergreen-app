@@ -1,0 +1,2 @@
+$ready ->
+  $(".date-input").datepicker()

@@ -1,0 +1,7 @@
+.answers-list-wrap{class: ("empty" if answers.empty?)}
+  %hr
+  
+  .row
+    %ul.answers.span8
+      - answers.each do |answer|
+        = render answer

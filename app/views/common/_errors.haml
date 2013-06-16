@@ -1,0 +1,5 @@
+.alert.alert-error
+  %ul.error-list
+    -record.errors.full_messages.each do |msg|
+      %li
+        =msg

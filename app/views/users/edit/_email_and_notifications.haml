@@ -1,0 +1,22 @@
+#email-and-notifications.tab-pane
+  = semantic_form_for @user, url: user_path(@user) do |f|    
+    = hidden_field_tag "company_id", params[:company_id]
+    = f.semantic_errors
+    = f.inputs do
+      = f.input :notify_of_responses_to_questions, as: :radio,
+      label: "Notify me by email when someone responds to a discussion I started"
+      = f.input :notify_of_responses_to_participated_in, as: :radio,
+      label: "Notify me by email when someone posts an answer or comment to a discussion I am participating in"
+
+    - if @company && admin?
+      .breaker
+      .well.admin-links
+        %p
+          :erb
+            <strong>Note:</strong>
+            You can modify your account's administrative
+            email settings <%= link_to "from here", 
+            edit_admin_user_path(@user, company_id: @company.id) + "#email-and-notifications" %>.
+    = f.actions do
+      = f.action :submit, label: "Update Settings",
+      button_html: {data: {disable_with: "Updating..."}}

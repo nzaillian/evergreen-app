@@ -1,0 +1,17 @@
+#domain.tab-pane
+  = semantic_form_for @company, url: admin_company_path(@company) do |f|
+    %p
+      :plain
+        We can make your site available at a fully custom domain
+        (e.g. "support.mycompany.com"). In order to do this, though, you
+        must create a CNAME record and point it 
+        at domains.evergreenapp.org. You can read about CNAME records 
+        <a href="http://support.google.com/a/bin/answer.py?hl=en&answer=47283">here</a>.
+        If you are struggling to create a CNAME record or otherwise to 
+        get your custom domain working properly, please 
+        <a href="mailto:support@evergreenapp.org">contact support</a>
+        directly by email.
+    = f.inputs do
+      = f.input :cname, label: "Domain", input_html: {class: "input-xlarge"}
+    = f.actions do
+      = f.action :submit, label: "Update Settings"

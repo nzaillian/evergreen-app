@@ -1,0 +1,13 @@
+%li
+  .row
+    .span8
+      = link_to truncate(question.title), question_path(question), class: "question-link"
+      %span.post-date
+        = "Posted #{question.created_at.to_s(:slashes)}"
+      %span.by
+        by
+      %span.author
+        = link_to truncate(question.user.nickname), user_path(question.user)
+  .row
+    .span8
+      = search_snippet(question.document, params[:question][:filters][:query], length: 300)

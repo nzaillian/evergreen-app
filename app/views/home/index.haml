@@ -1,0 +1,138 @@
+- content_for :main do
+  - cache do
+    .home-index
+      .lead
+        .row
+          .span10.offset1
+            %h1.center-align.primary
+              An open source question and answer app
+              for products and teams
+
+      %hr.divider
+
+      .divider-overlay
+        = link_to nil, href: company_questions_path("meta"), class: "btn btn-success btn-large try-button" do
+          %i.icon-leaf
+          See Evergreen App
+
+
+      .breaker
+
+      .row-fluid.lead-wrap
+        .lead.span12.center-align
+          Evergreen App is an open source question and answer platform
+          that lets you better engage with and support your users and your team.
+          Post public or private questions, solicit answers and comments,
+          mark the best as "accepted" and organically build up a tagged, searchable database
+          of knowledge around your product.
+
+      
+      %hr.divider
+
+      .divider-overlay.lower
+        %h3.message
+          What makes Evergreen great?
+
+      .breaker
+
+      .row-fluid.features
+        .span4.feature
+          %h4 
+            %i.icon-lock
+            Access Control
+          %p
+            Mark individual questions as
+            private to make them visible only to 
+            your team. If you have no need 
+            at all to share knowledge with 
+            the world, you can close off your
+            entire site to anyone who hasn't
+            been added to your team.
+
+        .span4.feature
+          %h4 
+            %i.icon-search
+            Full Text Search
+          %p
+            Evergreen maintains a full text
+            index of every portion of
+            every discussion.
+            The whole
+            of your knowledgebase
+            can be quickly searched over by 
+            keywords and phrases so you can find the 
+            information you need most with ease.
+
+        .span4.feature
+          %h4 
+            %i.icon-tags
+            Freeform Tagging
+          %p
+            Questions can be freely 
+            tagged by users and administrators.
+            With Evergreen's freeform
+            tagging, both you and your
+            users will have an easy time
+            surfacing new discussions relevant
+            to yourselves or that
+            you may be particularly well-prepared to answer.
+
+      .row-fluid.features
+        .span4.feature
+          %h4 
+            %i.icon-star
+            Ranking
+          %p
+            Your users vote on and "accept" answers and comments.
+            "Accepted" and highly-ranked answers are made more
+            prominent to future visitors.
+
+        .span4.feature
+          %h4 
+            %i.icon-pencil
+            Customization
+          %p
+            You can augment your site's stylesheets,
+            branding and copy from within the application itself,
+            as well as toggle on and off sidebar widgets and various
+            other customizations.
+
+        .span4.feature
+          %h4 
+            %i.icon-bell-alt
+            Notifications
+          %p
+            Your team members and users are automatically
+            notified by email of new activity in discussions
+            they have started or participated in. Notifications
+            can always be disabled with a single click.
+
+
+      %hr.divider.last
+
+      .divider-overlay.lower.last
+        %h3.message
+          :plain
+            ...and a <em>whole</em> lot more!          
+
+
+      .bottom-links
+        = link_to nil, href: company_questions_path("meta"), class: "btn btn-success demo-button" do
+          %i.icon-share-alt
+          Check it out now
+
+        = link_to nil, href: "github-path", class: "btn btn-primary fork-it" do
+          %i.icon-github
+          Fork it on Github
+
+        .or-wrap
+          %hr
+          .or
+            or        
+
+  - content_for :footer do
+    .fork-on-github
+      :plain
+        <a href="https://github.com/you"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+    = render partial: "/common/footer"        

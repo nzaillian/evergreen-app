@@ -1,0 +1,25 @@
+- content_for :main do
+  .row
+    .span6.offset3
+      .widget
+        .widget-header
+          %h3 Create an Account
+        .widget-content.padded
+          .row
+            .span4.offset1
+              = semantic_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+                = f.semantic_errors
+                = f.inputs do
+                  = f.input :username
+                  = f.input :password
+                  = f.input :password_confirmation, label: "Confirm password"
+                  = f.input :email
+                  = f.input :nickname                  
+                  = hidden_field_tag :team_member_id, params[:team_member_id]
+                  = hidden_field_tag :team_member_token, params[:team_member_token]          
+                  = hidden_field_tag :company_id, params[:company_id]
+                = f.actions do
+                  = f.action :submit, label: "Sign Up", button_html: {data: {disable_with: "Signing Up..."}}
+
+              .breaker
+              = render "users/shared/links"

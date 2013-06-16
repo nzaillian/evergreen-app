@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  database: <%= Figaro.env.db_name %>
+  username: <%= Figaro.env.db_user %>
+  password: <%= Figaro.env.db_password %>
+  timeout: 10000
+
+test:
+  adapter: postgresql
+  database: <%= Figaro.env.db_name %>
+  username: <%= Figaro.env.db_user %>
+  password: <%= Figaro.env.db_password %>
+  timeout: 10000
+
+production:
+  adapter: postgresql
+  database: <%= Figaro.env.fetch("db_name", "") %>
+  username: <%= Figaro.env.fetch("db_user", "") %>
+  password: <%= Figaro.env.fetch("db_password", "") %>
+  timeout: 10000

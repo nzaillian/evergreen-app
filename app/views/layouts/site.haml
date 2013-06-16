@@ -1,0 +1,33 @@
+- @_current_layout ||= 'site'
+!!!
+%html
+  %head
+    %title= @_page_title
+
+    = stylesheet_link_tag "application", media: "all"
+  
+    %style
+      - cache [@company, "styles"] do
+        = @company.styles
+  
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = render partial: "/common/fonts"
+
+    - if @company.favicon.present?
+      = favicon_link_tag @company.favicon.url
+
+  %body{class: "layout-#{@_current_layout}"}
+    = render partial: "/common/site_nav"
+    = render partial: "/admin/common/admin_bar"
+
+    #main-alerts
+      = alerts
+
+    .container
+      #content
+        = yield :main
+
+-# this is the layout reserved for "portal" portions of 
+-# the site. You'll see that we inject company-specific styles
+-# and logos above.        

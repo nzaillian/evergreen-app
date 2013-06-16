@@ -1,0 +1,22 @@
+- content_for :content do
+  #edit-users
+    .widget
+      .widget-header
+        %h3 Account Settings
+      .widget-content
+        .tabbed-form
+          %ul#company-edit-tabs.nav.nav-tabs
+            %li.active
+              %a{href: "#account-info"}
+                Basic Info
+            %li
+              %a{href: "#email-and-notifications"}                
+                Email Notifications
+            %li
+              %a{href: "#company-role"}
+                Company Role
+
+          .tab-content
+            = render "/admin/users/edit/account_info"
+            = render "/admin/users/edit/email_and_notifications"
+            = render "/admin/users/edit/company_role"

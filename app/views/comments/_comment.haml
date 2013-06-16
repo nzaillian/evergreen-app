@@ -1,0 +1,23 @@
+- cache [comment, current_user, "comment"] do
+  %li.comment{data: {id: comment.id}}
+    .score-wrap
+      .score
+        = comment.score
+      = link_to nil, href: "#", class: "vote comment-vote-link#{' voted' if voted_on?(comment)}",
+      data: {url: comment_comment_votes_path(comment), toggle: "tooltip", 
+      placement: "bottom", "votable-id" => comment.id, "votable-type" => comment.class.to_s}, title: "Upvote this comment" do
+        %i.icon-star
+
+    .comment-body
+      = markdown(comment.body)
+
+      %span.comment-info
+        &ndash;
+        %span.posted-by
+          = link_to truncate(comment.user.nickname), user_path(comment.user)
+        %span.time{data: {date: comment.created_at.iso8601}}
+          = comment.created_at.to_s(:slashes_with_time)
+    
+    = link_to nil, href: edit_comment_path(comment), data: {id: comment.id}, class: "edit-link" do
+      %i.icon-pencil
+    .clear

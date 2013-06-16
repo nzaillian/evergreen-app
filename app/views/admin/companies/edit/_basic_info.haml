@@ -1,0 +1,22 @@
+#basic-info.tab-pane.active
+  = semantic_form_for @company, url: admin_company_path(@company) do |f|
+    -# IMPORTANT: we keep the selected form stashed in this field to be read by JS
+    -# and preselect appropriate pane
+    
+    = hidden_field_tag "section", params[:section]
+
+    = f.inputs do
+      = f.input :name, label: "Company name"
+      = f.input :slug, label: "URL name"
+      = f.input :tagline, label: "Tagline", 
+      hint: "The above text is displayed under your company name (leave blank if you don't want any shown)",
+      input_html: {class: "large-size"}
+      = f.input :welcome_message, input_html: {class: "mid-size"}
+      = f.input :site_public, as: :radio, label: "Site visibility", 
+      hint: "If \"Private\", site content will only be available to people who you have added as team members",
+      collection: {"Public" => true, "Private" => false}
+      = f.input :default_questions_to_public, as: :radio,
+      label: "Default visibility for questions", collection: {"Public" => true, "Private" => false}      
+    
+    = f.actions do
+      = f.action :submit, label: "Update Settings"

@@ -1,0 +1,3 @@
+- content_for :content do
+  %h3 Edit your anwser
+  = render partial: "/answers/form", locals: {answer: @answer, url: answer_path(@answer), method: :patch, show_delete: true, show_heading: false, remote: false}

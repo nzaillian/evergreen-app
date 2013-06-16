@@ -1,0 +1,32 @@
+- content_for :content do
+  #edit-company
+    .widget
+      .widget-header
+        %h3 Site Settings
+      .widget-content
+        %ul#company-edit-tabs.nav.nav-tabs
+          %li.active
+            %a{href: "#basic-info"}
+              Basic Info
+          %li
+            %a{href: "#branding"}                
+              Branding
+          %li
+            %a{href: "#customization"}                
+              Customization
+          %li
+            %a{href: "#links"}
+              Site Links               
+          %li
+            %a{href: "#domain"}
+              Domain Settings   
+          %li
+            %a{href: "#sidebar-widgets"}
+              Sidebar Widgets              
+        .tab-content
+          = render "/admin/companies/edit/basic_info"
+          = render "/admin/companies/edit/links"
+          = render "/admin/companies/edit/branding"
+          = render "/admin/companies/edit/customization"
+          = render "/admin/companies/edit/domain"
+          = render "/admin/companies/edit/sidebar_widgets"

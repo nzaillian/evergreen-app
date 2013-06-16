@@ -1,0 +1,3 @@
+%ul.unstyled.question-search-results
+  - @questions.each do |question|
+    = render partial: "/questions/search_result", locals: {question: question}

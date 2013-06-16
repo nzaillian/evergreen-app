@@ -1,0 +1,10 @@
+.row
+  %ul.questions-list.span8
+    - if @questions.empty?
+      %li.empty
+        No questions have yet been asked
+    - else
+      - @questions.all.each do |question|
+        = render partial: "/questions/list_item", locals: {question: question}
+
+= paginate @questions, window: Question.pagination_window

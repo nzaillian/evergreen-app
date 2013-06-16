@@ -1,0 +1,132 @@
+//= require codemirror
+//= require codemirror/themes/eclipse
+//= require_tree ./admin
+//= require_tree ./common/ui
+//= require_tree ./lib
+//= require_tree ./questions
+//= require_tree ./answers
+//= require_tree ./sidebar
+//= require_tree ./users
+//= require_tree ./tags
+//= require_tree ./home
+//= require ./admin
+//= require ./answers
+//= require ./comments
+//= require ./questions
+//= require ./settings
+//= require ./tags
+//= require ./users
+//= require ./ui
+//= require ./plain
+//= require_self
+
+@import "common/common"
+
+*
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+body
+  background: #f5efe6
+  font-family: 'Open Sans', sans-serif
+
+a:hover
+  cursor: pointer  
+
+#main-alerts
+  width: 980px
+  margin: 0px auto
+
+#header
+  .navbar-inner
+    padding-left: 0px
+    padding-right: 0px
+
+    .brand
+      padding-left: 0px
+      margin-left: 0px
+
+      &.custom
+        margin: 0px
+        padding: 0px
+
+    .account-nav
+      float: right
+
+    .navbar-search
+      margin-top: 6px
+      margin-left: 25px
+      position: relative
+      float: left
+
+      input.search-query
+        line-height: 16px
+
+      .search-btn
+        display: none
+        position: absolute
+        margin: 0px
+        +rounded_corners_ext(0px, 15px, 15px, 0px)
+        right: 0px
+        top: 0px
+        height: 28px
+        border-color: $navbarInverseSearchBorder
+        +shadow_explicit(inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15))
+
+.navbar-content
+  width: 970px
+  margin: 0px auto
+
+.header
+  h1, h2, h3, h4
+    line-height: 100%
+    padding-top: 0px
+
+.container
+  width: 982px
+  margin: 20px auto 40px auto
+
+  #content
+    width: 100%
+    padding: 0px
+    border: 1px solid #c3c3c3
+    +rounded_corners(4px)
+    +basic_shadow_c(3px, #ccc)
+    background: $content_bg
+    position: relative
+
+#main
+  width: 678px
+  padding: 20px 20px 20px 30px
+  background: $main_bg
+  position: relative
+  z-index: 10
+
+#main-bg-fill
+  position: absolute
+  height: 100%
+  left: 0px
+  top: 0px
+  z-index: 0
+  background: $main_bg
+  width: 680px
+  border-right: 1px solid #dddddd
+
+#main, #main-bg-fill
+  +rounded_corners_ext(4px, 0px, 0px, 4px)  
+
+#content.content-box
+  margin: 18px auto
+  padding: 20px
+  background: $main_bg  
+
+input[type="text"], input[type="password"],
+input[type="number"], input[type="email"], input[type="url"],
+input[type="search"], input[type="tel"], input[type="color"], .uneditable-input
+  height: 28px
+
+#footer
+  width: 100%
+  text-align: center
+  padding: 0px 50px

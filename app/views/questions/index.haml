@@ -1,0 +1,30 @@
+- content_for :content do
+  .questions-index
+    .row.company-name-wrap
+      %h2.span8.primary-heading.company-name
+        = @company.name
+      
+      - if @company.tagline.present?
+        %hr.span8
+        %p.muted.tagline.span8= @company.tagline
+
+    .row
+      %hr.span8.top-divider
+
+    .row
+      .span8
+        = render partial: "/common/question_box", locals: {question: @question || Question.new}
+
+    .row
+      .span8
+        .nav.nav-tabs
+          %li{class: ("active" if params[:sort].blank? || params[:sort] == "popular")}
+            = link_to "Popular", company_questions_path(@company, sort: "popular")
+          %li{class: ("active" if params[:sort] == "recently_added")}
+            = link_to "Recently Asked", company_questions_path(@company, sort: "recently_added")
+          %li{class: ("active" if params[:sort] == "recently_responded_to")}
+            = link_to "Recently Active", company_questions_path(@company, sort: "recently_responded_to")          
+
+
+    - cache [@company, "questions", team_member?.to_s, params[:sort], params[:page]] do
+      = render partial: "list"

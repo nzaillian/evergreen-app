@@ -1,0 +1,18 @@
+- url = default_opt(:url) { company_tags_path(@company, format: :json) }
+
+.control-group#tag-select{data: {"url" => url}}
+  %label
+    Tags
+  .controls.input-styles
+    #tag-search-wrap
+      = text_field_tag "tags[filters][name]", "", id: "tag-search", class: "unstyled", autocomplete: "off"
+    
+    #tag-box
+      %ul.tags
+        - tags.each do |tag|
+          = render partial: "/tags/removable_tag", locals: {tag: tag}
+
+
+  #tag-ids
+    - tags.each_with_index do |tag, index|
+      = hidden_field_tag "question[tag_ids][]", tag.id, id: "tag_id_#{index}"

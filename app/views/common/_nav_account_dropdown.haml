@@ -1,0 +1,18 @@
+#nav-dropdown.nav-collapse.collapse
+  %ul.nav.account-nav
+    %li.dropdown
+      %a{:href => "#", :class => "dropdown-toggle", :data => {"toggle" => "dropdown"}}
+        Account
+      %ul.dropdown-menu.pull-right
+        -if user_signed_in?
+          %li
+            = link_to "Dashboard", current_user.home_path
+          %li
+            = link_to "Account Settings", edit_user_path(current_user, company_id: @company.try(:id))
+          %li
+            =link_to "Sign Out", destroy_user_session_path, data: {method: :delete}
+        -else
+          %li
+            =link_to "Sign In", new_user_session_path(company_id: @company.try(:id) || params[:company_id])
+          %li
+            =link_to "Create Account", new_user_registration_path(company_id: @company.try(:id) || params[:company_id])

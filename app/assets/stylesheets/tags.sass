@@ -1,0 +1,126 @@
+@import "common/common"
+
+#tag-select
+  margin-bottom: 14px
+  position: relative
+  z-index: 100
+
+  .controls
+    position: relative
+    min-height: 34px
+
+
+    #tag-search-wrap, #tag-box
+      position: absolute
+      top: 3px
+      left: 0px
+      z-index: 1
+
+    #tag-search-wrap
+      z-index: 10
+      width: 100%
+      overflow: hidden
+
+    #tag-search
+      height: 24px
+      padding: 0px
+      line-height: 100%
+      padding: 4px 6px
+
+    #tag-box
+      top: 3px
+      left: 3px
+
+      ul.tags
+        li
+          display: inline-block
+
+          &:after
+            right: -26px
+
+          a.remove
+            color: red
+            cursor: pointer
+            padding-left: 6px
+
+            &:hover
+              text-decoration: none
+
+
+    .dropdown-content
+      position: absolute
+      padding: 8px
+      border: 1px solid $inputBorder
+      width: 100%
+      top: 32px
+      background: $main_bg
+      +rounded_corners_ext(0px, 0px, 4px, 4px)
+
+      .close
+        position: absolute
+        top: 4px
+        right: 6px
+
+
+      ul.tag-search-results
+        margin: 0px
+        list-style-type: none
+
+        li.tag
+          display: inline-block
+
+          a
+            display: block
+            width: 192px
+            margin-right: 5px
+            cursor: pointer
+            padding: 5px 8px
+
+            &:hover
+              cursor: pointer
+              background: $warningBackground
+              text-decoration: none
+
+            .score
+              color: $grayLight
+              font-size: 11px
+
+      .empty
+        font-weight: bold
+        font-size: 15px
+        margin-bottom: 20px
+
+      .new-tag
+        width: 100%
+
+        form
+          input.name, input.submit
+            float: left
+            width: 180px
+
+          input.submit
+            margin-top: -2px
+            margin-left: 12px
+            width: 110px
+
+ul.tags            
+  margin: 0px
+  list-style-type: none
+
+
+  li.tag  
+    background: rgba(209,227,237,0.5)
+    border: 1px solid #dae5eb
+    +rounded_corners(3px)
+    display: inline-block
+    padding: 2px 6px 3px 6px
+
+    a
+      color: rgba(0,0,0,0.5)
+
+      &, &:hover
+        text-decoration: none
+
+    .score
+      font-size: 10px    
+      padding-left: 1px

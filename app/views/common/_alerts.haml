@@ -1,0 +1,28 @@
+-if flash and flash[:notice].present?
+  .alert.alert-success.flash
+    %a{:class => 'close', :data => {:dismiss => 'alert'}}
+      &times;
+    .inner-text
+      =flash[:notice]
+
+-if flash and flash[:alert].present?
+  .alert.alert-error.flash
+    %a{:class => 'close', :data => {:dismiss => 'alert'}}
+      &times;
+    .inner-text
+      =flash[:alert]
+
+-if flash and flash[:warning].present?
+  .alert.alert-error.flash
+    %a{:class => 'close', :data => {:dismiss => 'alert'}}
+      &times;
+    .inner-text
+      =flash[:warning]
+
+-if flash and flash[:validation_errors].present?
+  .alert.alert-error.flash.validation-errors
+    %a{:class => 'close', :data => {:dismiss => 'alert'}}
+      &times;
+    .inner-text
+      =flash[:validation_errors]
+

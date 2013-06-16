@@ -1,0 +1,3 @@
+- content_for :content do
+  %h3 Ask a new question
+  = render partial: "/questions/form", locals: {question: @question}

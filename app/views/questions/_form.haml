@@ -1,0 +1,22 @@
+- question = default_opt(:question) { Question.new }
+- url = default_opt(:url) { company_questions_path(@company) }
+- method = default_opt(:method) { :post }
+- show_delete = default_opt(:show_delete){ false }
+
+.row
+  .span8
+    = semantic_form_for @question, url: url, method: method, html: {class: "basic-form full-question-form"} do |f|
+      = f.semantic_errors
+      = f.inputs do
+        = f.input :title
+        = f.input :body, label: "Question", input_html: {class: "mid-size"}
+        = f.hidden_field :update_tags, {value: true}
+        = render partial: "/tags/tag_select", locals: {tags: question.tags, builder: f}
+        
+        - if team_member?
+          = f.input :visibility, as: :radio, collection: Question.visibility_options
+
+      = f.actions do
+        = f.action :submit, button_html: {data: {disable_with: "Loading..."}}
+        - if show_delete
+          = delete_link("Delete", question_path(@question), confirm: "Are you sure you want to remove your question?")

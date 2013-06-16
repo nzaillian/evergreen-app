@@ -1,0 +1,33 @@
+!!! html
+%html
+  %head
+    %style
+      = render_asset "mailers/style"
+
+  %body
+    %p
+      A new question has been posted
+      to your Evergreen site. Follow the link below 
+      to view it.
+
+    %p
+      - url = question_path(@question, only_path: false)
+      = link_to url, url
+
+    .notification-item
+      %h3 Question Summary
+      .by
+        Posted by 
+        = @question.user.nickname
+      %p.body
+        = @question.body
+
+
+    .unsubscribe
+      %hr
+
+      - account_edit_url = edit_user_path(@recipient, company_id: @question.company.id, only_path: false) + "#email-and-notifications"
+      If you would like to stop receiving notifications like
+      this, you can edit your email notification settings at
+      = link_to account_edit_url, account_edit_url
+

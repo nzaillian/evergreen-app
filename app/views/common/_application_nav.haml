@@ -1,0 +1,10 @@
+- cache [current_user, @company, "nav"] do
+  #header.navbar.navbar-inverse.navbar-static.navbar-static-top
+    .navbar-inner
+      .navbar-content
+        = link_to nil, href: root_path, class: "brand" do
+          %i.icon-leaf
+          Evergreen App
+
+        = render partial: "/common/nav_account_dropdown"        
+        = render partial: "/common/nav_search_box"

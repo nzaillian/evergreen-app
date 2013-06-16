@@ -1,0 +1,6 @@
+- cache [answer, "add_comment_link"] do
+  = link_to nil, href: "#", data: {url: new_company_comment_path(@company, answer_id: answer.id)}, class: "add-comment-link" do      
+    %span.comment-bubble
+      %i.icon-comment
+    %span.description
+      Add a comment

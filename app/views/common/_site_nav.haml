@@ -1,0 +1,14 @@
+- cache [current_user, @company, "nav"] do
+  #header.navbar.navbar-inverse.navbar-static.navbar-static-top
+    .navbar-inner
+      .navbar-content
+        - if @company.logo.present?
+          = link_to nil, href: company_questions_path(@company), alt: @company.name, class: "brand custom" do
+            = image_tag @company.logo, class: "logo"
+        - else
+          = link_to nil, href: root_path, class: "brand" do
+            %i.icon-leaf
+            Evergreen App
+
+        = render partial: "/common/nav_account_dropdown"        
+        = render partial: "/common/nav_search_box"

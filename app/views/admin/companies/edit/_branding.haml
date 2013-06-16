@@ -1,0 +1,26 @@
+#branding.tab-pane
+  = semantic_form_for @company, url: admin_company_path(@company) do |f|
+    = f.semantic_errors
+    
+    = f.inputs do
+      .image-upload.well
+        %h4 Logo
+        = image_tag @company.logo.url, class: "thumbnail"
+        = f.file_field :logo
+        = f.action :submit, label: "Start Upload", button_html: {class: "btn btn-info"}
+        - if @company.logo.present?
+          = link_to "Remove Logo", admin_company_company_delete_logo_path(@company),
+          data: {method: :delete, confirm: "Are you sure you want to delete this logo?"},
+          class: "delete-link"        
+        .clear
+
+      .image-upload.small.well
+        %h4 Favicon
+        = image_tag @company.favicon.url, class: "thumbnail"
+        = f.file_field :favicon
+        = f.action :submit, label: "Start Upload", button_html: {class: "btn btn-info"}
+        - if @company.logo.present?
+          = link_to "Remove Favicon", admin_company_company_delete_favicon_path(@company),
+          data: {method: :delete, confirm: "Are you sure you want to delete this favicon?"},
+          class: "delete-link"        
+        .clear

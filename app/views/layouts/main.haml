@@ -1,0 +1,17 @@
+- @_current_layout = 'main'
+- content_for :main do
+  #content
+    #main-bg-fill
+    .row
+      #main.span8
+        = render partial: "/common/breadcrumbs"
+        = yield :content
+
+      #sidebar.span4
+        .sidebar-content
+          - if content_for?(:sidebar)
+            = yield :sidebar
+          - else
+            = render partial: "/common/default_sidebar"
+
+= render template: "/layouts/plain"

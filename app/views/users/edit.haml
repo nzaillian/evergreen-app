@@ -1,0 +1,35 @@
+- content_for :main do
+  .row
+    .span6.offset3
+      .widget
+        .widget-header
+          %h3 Account Settings
+  
+        .widget-content
+          .tabbed-form
+            %ul#user-edit-tabs.nav.nav-tabs
+              %li.active
+                %a{href: "#account-info"}
+                  Basic Info
+              %li
+                %a{href: "#avatar"}
+                  Avatar           
+
+              %li
+                %a{href: "#password"}
+                  Password
+
+              %li
+                %a{href: "#email-and-notifications"}
+                  Email
+
+              %li
+                %a{href: "#companies"}
+                  Companies
+
+            .tab-content
+              = render "/users/edit/account_info"
+              = render "/users/edit/avatar"
+              = render "/users/edit/password"
+              = render "/users/edit/email_and_notifications"
+              = render "/users/edit/companies"

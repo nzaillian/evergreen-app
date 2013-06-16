@@ -1,0 +1,10 @@
+- content_for :main do
+  .row
+    .span4.offset4
+      .widget
+        .widget-header
+          %h3 New Tag
+        .widget-content.padded        
+          .row
+            .span4
+              = render partial: "form"

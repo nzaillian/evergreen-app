@@ -1,0 +1,22 @@
+- content_for :main do
+  .row
+    .span4.offset4
+      .widget
+        .widget-header
+          %h3 Sign In
+        .widget-content.padded        
+          .row
+            .span4
+              = semantic_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+                = f.semantic_errors
+                = f.inputs do
+                  = f.input :login, label: "Username or Email"
+                  = f.input :password
+                  = hidden_field_tag :team_member_id, params[:team_member_id]
+                  = hidden_field_tag :team_member_token, params[:team_member_token]
+                  = hidden_field_tag :company_id, params[:company_id]
+                = f.actions do
+                  = f.action :submit, label: "Sign In", button_html: {data: {disable_with: "Signing In..."}}
+
+              .breaker
+              = render "users/shared/links"

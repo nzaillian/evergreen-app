@@ -1,0 +1,10 @@
+- cache [question, "tags"] do
+  .question-tags
+    %ul.tags
+      - question.tags.each do |tag|
+        %li.tag{data: {id: tag.id, name: tag.name}}
+          = link_to nil, href: tag_path(tag) do
+            %span.name
+              = tag.name
+            %span.score
+              ="x#{tag.score}"

@@ -1,0 +1,8 @@
+- cache [answer, "vote_link"] do
+  = link_to nil, href: "#", data: {url: answer_answer_votes_path(answer_id: answer.id), 
+  "votable-id" => answer.id, "votable-type" => answer.class.to_s}, class: "vote-link vote" do
+    %span.star
+      %i.icon-star
+    %span.description
+      :plain
+        Upvote this answer!
