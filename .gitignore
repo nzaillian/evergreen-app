@@ -25,9 +25,9 @@
 
 /public/uploads
 
-/config/application.yml
+config/application.yml
 
-/config/initializers/action_mailer_credentials.rb
+config/initializers/action_mailer_credentials.rb
 
 Capfile
 

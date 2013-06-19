@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
   before_filter :find_comment, only: member_actions
   before_filter :require_login, only: [:votes, :new, :edit]
 
+  layout "site_main"
+
   def new
     @answer = @company.answers.find(params[:answer_id])
     @comment = @answer.comments.new

@@ -39,7 +39,15 @@ class Admin::CompaniesController < Admin::AdminController
   end
 
   def edit
-    authorize! :read, @company
+    authorize! :view_settings, @company
+
+    @team_member = @company.team_members.find_by_user_id(current_user.id)
+
+    # bounce to admin user account edit if not an "admin"-role user
+    if @team_member.role != :admin
+      redirect_to(edit_admin_user_path(current_user, company_id: @company.id)) and return
+    end
+
     render layout: "settings"
   end
 

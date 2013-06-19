@@ -4,6 +4,8 @@ class AnswersController < ApplicationController
   before_filter :require_login, only: [:votes, :create]
   before_filter :add_edit_breadcrumbs, only: [:edit, :update]
 
+  layout "site_main"
+
   def create
     @answer = Answer.new(answer_params)
 

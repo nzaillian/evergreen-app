@@ -24,6 +24,10 @@ class Ability
       end
     end
 
+    can :view_settings, Company do |company|
+      user.id && company.team_members.map(&:user_id).include?(user.id)
+    end    
+
     can :modify, Question do |question|
       question.user == user || can?(:modify, question.company)
     end
