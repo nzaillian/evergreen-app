@@ -19,19 +19,19 @@
             %li
               .icon-wrap
                 %i.icon-lightbulb
-              = @user.questions.size
-              Discussions Started
+              = pluralize(@user.questions.size, "Discussion")
+              Started
             %li
               .icon-wrap
                 %i.icon-comment-alt
-              = @user.answers.size
-              Answers Given
+              = pluralize(@user.answers.size, "Answer")
+              Given
 
             %li
               .icon-wrap
                 %i.icon-comments-alt
-              = @user.answers.size
-              Comments Posted
+              = pluralize(@user.comments.size, "Comment")
+              Posted
 
       .span9.user-questions
         .row
