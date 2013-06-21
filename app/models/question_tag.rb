@@ -17,6 +17,6 @@ class QuestionTag < ActiveRecord::Base
   end
 
   def touch_all_related_questions
-    tag.questions.where("id != ?", question.id).map &:touch
+    tag.questions.where("questions.id != ?", question.id).map &:touch
   end
 end
