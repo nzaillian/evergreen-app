@@ -1,4 +1,4 @@
-- cache [@company, "links"] do
+- cache [@company, "links", admin?] do
   - if @company.site_links_sidebar_widget_enabled && @company.links.size > 0
     #links.box
       %h4 

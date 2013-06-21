@@ -22,7 +22,7 @@ class Admin::UsersController < Admin::AdminController
   end  
 
   def delete_avatar
-    @user = User.find(params[:user_id])
+    @user = User.friendly.find(params[:user_id])
 
     authorize! :modify, @user
 
@@ -38,7 +38,7 @@ class Admin::UsersController < Admin::AdminController
   private
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @team_member = @company.team_members.where(user_id: @user.id).first!
   end
 

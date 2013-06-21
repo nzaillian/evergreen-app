@@ -32,6 +32,10 @@ class Ability
       question.user == user || can?(:modify, question.company)
     end
 
+    can :admin, Question do |question|
+      can?(:admin, question.company)
+    end    
+
     can :read, Question do |question|
       if question.private?
         question.user == user || question.company.team_members.map(&:user_id).include?(user.id)

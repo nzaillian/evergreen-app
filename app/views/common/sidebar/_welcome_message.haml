@@ -1,4 +1,4 @@
-- cache [@company, "welcome_message"] do
+- cache [@company, "welcome_message", admin?] do
   - if @company.welcome_message_sidebar_widget_enabled && @company.welcome_message.present?
     #welcome-message.box
       - if @company.welcome_message_sidebar_widget_title.present?        

@@ -152,14 +152,19 @@ class QuestionsController < ApplicationController
 
   def add_show_authorizations_to_cookie
     if current_user
-      if can?(:modify, @question)
+      if can?(:admin, @question)
         user_answer_ids = @question.answers.map(&:id)
         user_comment_ids = @question.comments.map(&:id)        
         question_ids = [@question.id]
       else
         user_answer_ids = current_user.answers.where(question_id: @question.id).map(&:id)
         user_comment_ids = @question.comments.where(user_id: current_user.id).map(&:id)
-        question_ids = []
+        
+        if can?(:modify, @question)
+          question_ids = [@question.id]
+        else
+          question_ids = []
+        end
       end
 
       voted_on = @question.aggregate_votes.where(user_id: current_user.id)

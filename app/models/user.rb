@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   include Users::LoginAuthenticatable, Users::Urls, Users::Search, 
           Users::Questions, Users::Roles, Common::Uuid
 
+  extend FriendlyId
+
+  friendly_id :nickname, use: :slugged
+
   devise :database_authenticatable, :registerable, :recoverable, :validatable,
          authentication_keys: [:login]
 
@@ -62,5 +66,9 @@ class User < ActiveRecord::Base
     questions.map &:touch
     answers.update_all(updated_at: current_time_from_proper_timezone)
     comments.update_all(updated_at: current_time_from_proper_timezone)
+  end
+
+  def should_generate_new_friendly_id?
+    nickname_changed? && nickname.present?    
   end
 end
