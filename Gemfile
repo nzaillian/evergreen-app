@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "4.0.0.rc2"
+gem "rails", "4.0.0"
 
 gem "sqlite3"
 
@@ -21,8 +21,6 @@ group :test do
   gem "rspec-rails", git: "git@github.com:rspec/rspec-rails.git"
   gem "database_cleaner"
 end
-
-gem "cache_digests"
 
 gem "haml-rails"
 

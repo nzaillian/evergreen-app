@@ -1,5 +1,6 @@
 development:
   adapter: postgresql
+  host: 127.0.0.1
   database: <%= Figaro.env.db_name %>
   username: <%= Figaro.env.db_user %>
   password: <%= Figaro.env.db_password %>
@@ -7,6 +8,7 @@ development:
 
 test:
   adapter: postgresql
+  host: 127.0.0.1
   database: <%= Figaro.env.db_name %>
   username: <%= Figaro.env.db_user %>
   password: <%= Figaro.env.db_password %>
@@ -14,6 +16,7 @@ test:
 
 production:
   adapter: postgresql
+  host: 127.0.0.1
   database: <%= Figaro.env.fetch("db_name", "") %>
   username: <%= Figaro.env.fetch("db_user", "") %>
   password: <%= Figaro.env.fetch("db_password", "") %>

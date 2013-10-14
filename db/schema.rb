@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130621053952) do
   create_table "companies", force: true do |t|
     t.string   "uuid"
     t.string   "name"
+    t.string   "tagline"
     t.text     "description"
     t.integer  "owner_id"
     t.string   "maildrop_address"
@@ -74,7 +75,6 @@ ActiveRecord::Schema.define(version: 20130621053952) do
     t.boolean  "tag_box_sidebar_widget_enabled",         default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "tagline"
   end
 
   add_index "companies", ["cname"], name: "index_companies_on_cname", using: :btree
@@ -151,10 +151,10 @@ ActiveRecord::Schema.define(version: 20130621053952) do
   create_table "tags", force: true do |t|
     t.integer  "company_id"
     t.string   "name"
+    t.string   "slug"
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
   end
 
   add_index "tags", ["company_id"], name: "index_tags_on_company_id", using: :btree
