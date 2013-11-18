@@ -1,23 +1,35 @@
-development:
-  adapter: postgresql
-  host: 127.0.0.1
-  database: <%= Figaro.env.db_name %>
-  username: <%= Figaro.env.db_user %>
-  password: <%= Figaro.env.db_password %>
-  timeout: 10000
-
-test:
-  adapter: postgresql
-  host: 127.0.0.1
-  database: <%= Figaro.env.db_name %>
-  username: <%= Figaro.env.db_user %>
-  password: <%= Figaro.env.db_password %>
-  timeout: 10000
-
+# Default setup is given for MySQL with ruby1.8. If you're running Redmine
+# with MySQL and ruby1.9, replace the adapter name with `mysql2`.
+# Examples for PostgreSQL and SQLite3 can be found at the end. check... deploy #4
+#POSTGRESQL
 production:
-  adapter: postgresql
-  host: 127.0.0.1
-  database: <%= Figaro.env.fetch("db_name", "") %>
-  username: <%= Figaro.env.fetch("db_user", "") %>
-  password: <%= Figaro.env.fetch("db_password", "") %>
-  timeout: 10000
+  adapter:  mysql2
+  database: <%= ENV['OPENSHIFT_APP_NAME'] %>
+  host:     <%= ENV['OPENSHIFT_MYSQL_DB_HOST'] %>
+  username: <%= ENV['OPENSHIFT_MYSQL_DB_USERNAME'] %>
+  password: <%= ENV['OPENSHIFT_MYSQL_DB_PASSWORD'] %>
+  port:     <%= ENV['OPENSHIFT_MYSQL_DB_PORT'] %>
+  encoding: utf8
+
+development:
+  adapter:  postgresql
+  database: <%= ENV['OPENSHIFT_APP_NAME'] %>
+  host:     <%= ENV['OPENSHIFT_POSTGRESQL_DB_HOST'] %>
+  username: <%= ENV['OPENSHIFT_POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['OPENSHIFT_POSTGRESQL_PASSWORD'] %>
+  encoding: utf8
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: mongodb
+  database: <%= ENV['OPENSHIFT_APP_NAME'] %>
+  host:     <%= ENV['OPENSHIFT_MONGODB_DB_HOST'] %>
+  username: <%= ENV['OPENSHIFT_MONGODB_DB_USERNAME'] %>
+  password: <%= ENV['OPENSHIFT_MONGODB_PASSWORD'] %>
+  encoding: utf8
+
+#test:
+#  adapter: sqlite3
+#  database: db/test.sqlite3
