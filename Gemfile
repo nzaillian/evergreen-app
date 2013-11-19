@@ -1,37 +1,16 @@
 source "http://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails"
+gem "rails", "4.0.0"
 
-# Database gems
-platforms :mri, :mingw do
-  group :postgresql do
-    gem "pg"
-  end
-
-  group :sqlite do
-    gem "sqlite3"
-  end
-end
-
-platforms :mri_18, :mingw_18 do
-  group :mysql do
-    gem "mysql"
-  end
-end
-
-platforms :mri_19, :mingw_19 do
-  group :mysql do
-    gem "mysql2"
-  end
-end
+gem "sqlite3"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem "sass-rails"
-  gem "coffee-rails"
-  gem "uglifier"
+  gem "sass-rails",   "~> 4.0.0.rc1"
+  gem "coffee-rails", "~> 4.0.0.rc1"
+  gem "uglifier", ">= 1.0.3"
 end
 
 group :development, :test do
@@ -44,6 +23,8 @@ group :test do
 end
 
 gem "haml-rails"
+
+gem "pg"
 
 gem "dalli"
 
@@ -59,9 +40,9 @@ gem "turbolinks"
 gem "figaro"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder"
+gem "jbuilder", "~> 1.0.1"
 
-gem "devise"
+gem "devise", "~> 3.0.0.rc"
 
 gem "breadcrumbs_on_rails"
 
@@ -73,7 +54,6 @@ gem "sprockets-rails"
 
 gem "cancan"
 
-#gem "therubyracer"
 
 gem "font-awesome-rails"
 
@@ -97,13 +77,11 @@ gem "kaminari"
 
 gem "carrierwave"
 
-#gem "rmagick"
-
 gem "uuidtools", require: "uuidtools"
 
 gem "mail_view"
 
-#gem "nokogiri"
+gem "nokogiri"
 
 gem "friendly_id"
 

@@ -7,25 +7,25 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    actionmailer (4.0.1)
-      actionpack (= 4.0.1)
-      mail (~> 2.5.4)
-    actionpack (4.0.1)
-      activesupport (= 4.0.1)
+    actionmailer (4.0.0)
+      actionpack (= 4.0.0)
+      mail (~> 2.5.3)
+    actionpack (4.0.0)
+      activesupport (= 4.0.0)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.1)
-      activesupport (= 4.0.1)
+    activemodel (4.0.0)
+      activesupport (= 4.0.0)
       builder (~> 3.1.0)
-    activerecord (4.0.1)
-      activemodel (= 4.0.1)
+    activerecord (4.0.0)
+      activemodel (= 4.0.0)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.1)
+      activesupport (= 4.0.0)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.1)
+    activesupport (4.0.0)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
@@ -66,11 +66,10 @@ GEM
     delayed_job_active_record (4.0.0)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
-    devise (3.2.1)
+    devise (3.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -100,9 +99,8 @@ GEM
     handles_sortable_columns (0.1.4)
     hike (1.2.3)
     i18n (0.6.5)
-    jbuilder (1.5.2)
+    jbuilder (1.0.2)
       activesupport (>= 3.0.0)
-      multi_json (>= 1.2.0)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -132,27 +130,28 @@ GEM
       mail (>= 2.0.3)
       maildir (>= 0.5.0)
     mime-types (1.25)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
-    mysql (2.9.1-x86-mingw32)
-    mysql2 (0.3.14)
+    nokogiri (1.6.0-x86-mingw32)
+      mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.0.1)
-      actionmailer (= 4.0.1)
-      actionpack (= 4.0.1)
-      activerecord (= 4.0.1)
-      activesupport (= 4.0.1)
+    rails (4.0.0)
+      actionmailer (= 4.0.0)
+      actionpack (= 4.0.0)
+      activerecord (= 4.0.0)
+      activesupport (= 4.0.0)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.1)
+      railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
-    railties (4.0.1)
-      actionpack (= 4.0.1)
-      activesupport (= 4.0.1)
+    railties (4.0.0)
+      actionpack (= 4.0.0)
+      activesupport (= 4.0.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
@@ -215,13 +214,13 @@ DEPENDENCIES
   cancan
   carrierwave
   codemirror-rails
-  coffee-rails
+  coffee-rails (~> 4.0.0.rc1)
   daemons
   dalli
   database_cleaner
   delayed_job
   delayed_job_active_record
-  devise
+  devise (~> 3.0.0.rc)
   exception_notification
   factory_girl
   figaro
@@ -231,23 +230,22 @@ DEPENDENCIES
   friendly_id
   haml-rails
   handles_sortable_columns
-  jbuilder
+  jbuilder (~> 1.0.1)
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
   kaminari
   mail_view
   mailman
-  mysql
-  mysql2
+  nokogiri
   pg
-  rails
+  rails (= 4.0.0)
   redcarpet
   rspec-rails
-  sass-rails
+  sass-rails (~> 4.0.0.rc1)
   sprockets-rails
   sqlite3
   tabs_on_rails
   turbolinks
-  uglifier
+  uglifier (>= 1.0.3)
   uuidtools
