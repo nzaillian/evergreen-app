@@ -9,27 +9,35 @@ You can view our site in action here: [http://www.evergreenapp.org](http://www.e
 
 Create an account at [http://openshift.redhat.com/](https://openshift.redhat.com/app/console/applications)
 
-#### Create a ruby application (ruby-1.8 or ruby-1.9)
+This OpenShift QuickSatart need upgrade stroge.
+
+Install Command-line OpenShift
 
 ```ssh
-	rhc app create -a evergreen -t ruby-1.9  # or ruby-1.8
+ gem install rhc --development
 ```
 
-#### Add Database support to your application
+##### Create a ruby application (ruby-1.8 or ruby-1.9)
 
 ```ssh
-    rhc cartridge-add -a evergreen -c mysql-5.1
+	rhc create-app -a evergreen -t ruby-1.9  # or ruby-1.8
+```
+
+##### Add Database support to your application
+
+```ssh
+    rhc add-cartridge -a evergreen -c mysql-5.1
 	
-	rhc cartridge-add -a evergreen -c phpmyadmin-4
+	rhc add-cartridge -a evergreen -c phpmyadmin-4
 	
-	rhc cartridge-add -a evergreen -c postgresql-9.2 # or postgresql-8.4
+	rhc add-cartridge -a evergreen -c postgresql-9.2 # or postgresql-8.4
     
-	rhc cartridge-add -a evergreen -c mongodb-2.2
+	rhc add-cartridge -a evergreen -c mongodb-2.2
 ```
 
 Make a note of the username, password, and host name as you will need to use these to login to the mysql database
 
-#### Add this upstream Evergreen App quickstart repo
+##### Add this upstream Evergreen App quickstart repo
 
 ```ssh
 	cd evergreen
@@ -37,13 +45,13 @@ Make a note of the username, password, and host name as you will need to use the
 	git pull -s recursive -X theirs upstream master
 ```
 
-#### Then push the repo upstream
+##### Then push the repo upstream
 
 ```ssh
 	git push
 ```
 
-#### That's it, you can now checkout your application at:
+##### That's it, you can now checkout your application at:
 
 ```ssh
 	http://evergreen-$yournamespace.rhcloud.com
