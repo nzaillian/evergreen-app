@@ -5,6 +5,58 @@ Evergreen App is an open source question and answer platform that lets you bette
 
 You can view our site in action here: [http://www.evergreenapp.org](http://www.evergreenapp.org)
 
+### Running Evergreen App on OpenShift
+
+Create an account at [http://openshift.redhat.com/](https://openshift.redhat.com/app/console/applications)
+
+This OpenShift QuickSatart need upgrade storage.
+
+Install Command-line OpenShift
+
+```ssh
+ gem install rhc --development
+```
+
+##### Create a ruby application (ruby-1.8 or ruby-1.9)
+
+```ssh
+	rhc create-app -a evergreen -t ruby-1.9  # or ruby-1.8
+```
+
+##### Add Database support to your application
+
+```ssh
+    rhc add-cartridge -a evergreen -c mysql-5.1
+	
+	rhc add-cartridge -a evergreen -c phpmyadmin-4
+	
+	rhc add-cartridge -a evergreen -c postgresql-9.2 # or postgresql-8.4
+    
+	rhc add-cartridge -a evergreen -c mongodb-2.2
+```
+
+Make a note of the username, password, and host name as you will need to use these to login to the mysql database
+
+##### Add this upstream Evergreen App quickstart repo
+
+```ssh
+	cd evergreen
+	git remote add upstream -m master https://github.com/tigefa4u/evergreen-app.git
+	git pull -s recursive -X theirs upstream master
+```
+
+##### Then push the repo upstream
+
+```ssh
+	git push
+```
+
+##### That's it, you can now checkout your application at:
+
+```ssh
+	http://evergreen-$yournamespace.rhcloud.com
+```	
+
 ### Setup
 Evergreen depends on certain features of PostgreSQL for core functionality
 so you will need a Postgres install to run the app. You'll also
