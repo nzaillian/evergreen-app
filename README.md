@@ -9,7 +9,7 @@ You can view our site in action here: [http://www.evergreenapp.org](http://www.e
 
 Create an account at [http://openshift.redhat.com/](https://openshift.redhat.com/app/console/applications)
 
-This OpenShift QuickSatart need upgrade stroge.
+This OpenShift QuickSatart need upgrade storage.
 
 Install Command-line OpenShift
 
